@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom PC Builds | Byte Buster — Eastanollee, GA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+    :root { --black: #0a0a0a; --dark: #111214; --panel: #16181c; --border: #2a2d35; --accent: #00e5ff; --text: #e8eaf0; --muted: #7a7f8e; --font-display: 'Barlow Condensed', sans-serif; --font-mono: 'IBM Plex Mono', monospace; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--text); font-family: var(--font-mono); overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.18) saturate(0.5); z-index: -1; }
+    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 9999; }
+    
+    /* NAV TICKER */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; height: 60px; overflow: hidden; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 0 1.5rem; flex-shrink: 0; border-right: 1px solid var(--border); height: 100%; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; white-space: nowrap; }
+    .nav-ticker-wrap { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
+    .nav-ticker { display: flex; align-items: center; white-space: nowrap; animation: navScroll 18s linear infinite; will-change: transform; }
+    .nav-ticker-wrap:hover .nav-ticker { animation-play-state: paused; }
+    .nav-ticker a { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 1.25rem; height: 60px; line-height: 60px; display: inline-block; transition: color 0.2s, background 0.2s; }
+    .nav-ticker a:hover { color: var(--accent); background: rgba(0,229,255,0.08); }
+    .nav-ticker a.active { color: var(--accent); }
+    .nav-sep { color: var(--border); font-size: 0.6rem; padding: 0 0.1rem; user-select: none; }
+    @keyframes navScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; }
+    /* nav ticker styles already defined above */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .page-hero { padding: 5rem 0 3rem; }
+    .hero-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 0.3rem 0.8rem; margin-bottom: 1.5rem; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both; }
+    .page-hero h1 em { font-style: normal; color: var(--accent); display: block; }
+    .page-hero p { font-size: 0.85rem; color: var(--muted); line-height: 1.8; max-width: 540px; margin-bottom: 2rem; }
+    .btn-primary { display: inline-block; background: var(--accent); color: var(--black); font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: #33eaff; transform: translateY(-2px); }
+    section { padding: 4rem 0; }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 1; }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+    .build-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .build-card { background: var(--panel); padding: 2rem; position: relative; overflow: hidden; transition: background 0.2s; display: flex; flex-direction: column; }
+    .build-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.3s; }
+    .build-card:hover { background: #1a1d22; }
+    .build-card:hover::before { height: 100%; }
+    .build-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .build-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .build-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.8; flex: 1; }
+    .build-tag { display: inline-block; margin-top: 1rem; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.2); padding: 0.2rem 0.5rem; align-self: flex-start; }
+    .process-list { display: flex; flex-direction: column; border: 1px solid var(--border); counter-reset: steps; }
+    .process-step { display: flex; gap: 1.5rem; padding: 1.75rem; border-bottom: 1px solid var(--border); align-items: flex-start; transition: background 0.2s; counter-increment: steps; }
+    .process-step:last-child { border-bottom: none; }
+    .process-step:hover { background: rgba(0,229,255,0.03); }
+    .step-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; color: rgba(0,229,255,0.15); line-height: 1; flex-shrink: 0; min-width: 2.5rem; transition: color 0.2s; }
+    .process-step:hover .step-num { color: rgba(0,229,255,0.3); }
+    .step-text h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+    .step-text p { font-size: 0.75rem; color: var(--muted); line-height: 1.7; }
+    .contact-strip { border: 1px solid var(--border); display: flex; flex-direction: column; }
+    .contact-strip-label { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent); padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--panel); }
+    .contact-option-card { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 1.25rem; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); background: transparent; transition: background 0.2s; border-left: 3px solid transparent; }
+    .contact-option-card:last-child { border-bottom: none; }
+    .contact-option-card:hover { background: rgba(0,229,255,0.05); border-left-color: var(--accent); }
+    .contact-option-icon { font-size: 1.75rem; flex-shrink: 0; }
+    .contact-option-text { display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
+    .contact-option-text strong { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-option-text span { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+    .contact-option-arrow { font-size: 1.25rem; color: var(--muted); transition: color 0.2s, transform 0.2s; }
+    .contact-option-card:hover .contact-option-arrow { color: var(--accent); transform: translateX(4px); }
+    footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+    .footer-brand span { color: var(--accent); }
+    footer p { font-size: 0.65rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Byte Buster"/>
+    <span>Byte Buster</span>
+  </a>
+  <div class="nav-ticker-wrap">
+    <div class="nav-ticker" id="nav-ticker">
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
+    </div>
+  </div>
+</nav>
+
+
+<div class="wrap">
+  <div class="page-hero">
+    <div class="hero-tag">// Custom PC Builds</div>
+    <h1>Built For You.<em>Built To Last.</em></h1>
+    <p>Gaming rigs, streaming powerhouses, office workstations — every build is hand-assembled, tested, and personally tuned to your exact needs and budget. Local pickup or shipped anywhere in the U.S.</p>
+    <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank" class="btn-primary">Start Your Build →</a>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-label">01</span>
+      <h2 class="section-title">Popular Build Types</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="build-grid">
+      <div class="build-card">
+        <div class="build-icon">🎮</div>
+        <div class="build-name">Budget Gaming</div>
+        <p class="build-desc">1080p-ready builds with entry-level parts that punch above their weight. Great for new PC gamers or younger players.</p>
+        <span class="build-tag">Entry Level</span>
+      </div>
+      <div class="build-card">
+        <div class="build-icon">⚡</div>
+        <div class="build-name">Mid-Range Gaming</div>
+        <p class="build-desc">1440p performance with solid frame rates on modern titles. The sweet spot for most gamers.</p>
+        <span class="build-tag">Best Value</span>
+      </div>
+      <div class="build-card">
+        <div class="build-icon">🏆</div>
+        <div class="build-name">High-End Gaming</div>
+        <p class="build-desc">4K capable, max settings, high refresh rates. Built for serious gamers who want the best.</p>
+        <span class="build-tag">Premium</span>
+      </div>
+      <div class="build-card">
+        <div class="build-icon">📹</div>
+        <div class="build-name">Streaming &amp; Content</div>
+        <p class="build-desc">Multi-core workhorses for gaming, streaming, and editing simultaneously without dropping frames.</p>
+        <span class="build-tag">Creator</span>
+      </div>
+      <div class="build-card">
+        <div class="build-icon">🧊</div>
+        <div class="build-name">RGB Showcase</div>
+        <p class="build-desc">Glass panel cases, RGB lighting, and cable management that looks as good as it performs.</p>
+        <span class="build-tag">Aesthetic</span>
+      </div>
+      <div class="build-card">
+        <div class="build-icon">⚙️</div>
+        <div class="build-name">Workstation / Office</div>
+        <p class="build-desc">Reliable, quiet, and efficient builds for productivity, video editing, CAD, or business use.</p>
+        <span class="build-tag">Professional</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-label">02</span>
+      <h2 class="section-title">How It Works</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="process-list">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-text"><h3>Tell Us Your Needs</h3><p>Share your budget, what you'll use it for, and any preferences — games, software, aesthetics. Message me on Facebook or by email.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-text"><h3>We Build a Parts List</h3><p>I put together a tailored parts list for you and send you a quote. No commitment until you approve it.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-text"><h3>Deposit &amp; Parts Order</h3><p>Once you approve the build, a non-refundable deposit covers parts cost. Parts are ordered immediately.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-text"><h3>Assembly &amp; Testing</h3><p>I build and stress-test your system — benchmarks, temperature checks, and stability runs before it ships.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-text"><h3>Pickup or Delivery</h3><p>Local customers can pick up in Eastanollee. We also ship nationwide — remaining balance due before shipping.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-label">03</span>
+      <h2 class="section-title">Start Your Build</h2>
+      <div class="section-line"></div>
+    </div>
+          <div class="contact-form-wrap">
+        <form action="https://formsubmit.co/agibson2446@yahoo.com" method="POST">
+          <input type="hidden" name="_subject" value="Custom PC Build Request - Byte Buster"/>
+          <input type="hidden" name="_captcha" value="false"/>
+          <input type="hidden" name="_next" value="https://bytebusterga.github.io/custom-pc-builds.html"/>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required/>
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+            </div>
+          </div>
+          <div class="form-field full">
+            <label for="device">Build Type</label>
+            <select id="device" name="device">
+              <option value="">Select build type...</option>
+              <option>Budget Gaming PC</option><option>Mid-Range Gaming PC</option><option>High-End Gaming PC</option>
+              <option>Streaming / Content Creation</option><option>RGB Showcase Build</option>
+              <option>Office / Workstation</option><option>Not Sure — Need Advice</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="message">Budget &amp; Requirements</label>
+            <textarea id="message" name="message" placeholder="Tell me your budget and what you need the PC for..." required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit">Send Request →</button>
+          </div>
+        </form>
+        <div class="backup-contact">
+          <p class="backup-label">// Having trouble with the form? Reach me directly:</p>
+          <div class="backup-links">
+            <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank" class="backup-link">💬 Facebook</a>
+            <a href="mailto:agibson2446@yahoo.com" class="backup-link">📧 Email</a>
+            <a href="tel:7062440698" class="backup-link">📞 706-244-0698</a>
+          </div>
+        </div>
+      </div>
+  </section>
+</div>
+
+<footer>
+  <div><div class="footer-brand">Byte<span>Buster</span></div><p>© 2026 Byte Buster · Eastanollee, GA</p></div>
+  <ul class="footer-links">
+    <li><a href="pc-repair.html">PC Repair</a></li>
+    <li><a href="console-modding.html">Console Mods</a></li>
+    <li><a href="c

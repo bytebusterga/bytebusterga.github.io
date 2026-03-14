@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PC Repair | Byte Buster — Eastanollee, GA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+    :root { --black: #0a0a0a; --dark: #111214; --panel: #16181c; --border: #2a2d35; --accent: #00e5ff; --text: #e8eaf0; --muted: #7a7f8e; --font-display: 'Barlow Condensed', sans-serif; --font-mono: 'IBM Plex Mono', monospace; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--text); font-family: var(--font-mono); overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.18) saturate(0.5); z-index: -1; }
+    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 9999; }
+    
+    /* NAV TICKER */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; height: 60px; overflow: hidden; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 0 1.5rem; flex-shrink: 0; border-right: 1px solid var(--border); height: 100%; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; white-space: nowrap; }
+    .nav-ticker-wrap { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
+    .nav-ticker { display: flex; align-items: center; white-space: nowrap; animation: navScroll 18s linear infinite; will-change: transform; }
+    .nav-ticker-wrap:hover .nav-ticker { animation-play-state: paused; }
+    .nav-ticker a { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 1.25rem; height: 60px; line-height: 60px; display: inline-block; transition: color 0.2s, background 0.2s; }
+    .nav-ticker a:hover { color: var(--accent); background: rgba(0,229,255,0.08); }
+    .nav-ticker a.active { color: var(--accent); }
+    .nav-sep { color: var(--border); font-size: 0.6rem; padding: 0 0.1rem; user-select: none; }
+    @keyframes navScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; }
+    /* nav ticker styles already defined above */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .page-hero { padding: 5rem 0 3rem; }
+    .hero-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 0.3rem 0.8rem; margin-bottom: 1.5rem; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both; }
+    .page-hero h1 em { font-style: normal; color: var(--accent); display: block; }
+    .page-hero p { font-size: 0.85rem; color: var(--muted); line-height: 1.8; max-width: 540px; margin-bottom: 2rem; animation: fadeUp 0.6s 0.1s ease both; }
+    .btn-primary { display: inline-block; background: var(--accent); color: var(--black); font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: #33eaff; transform: translateY(-2px); }
+    section { padding: 4rem 0; }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 1; }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .card { background: var(--panel); padding: 2rem; position: relative; overflow: hidden; transition: background 0.2s; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.3s; }
+    .card:hover { background: #1a1d22; }
+    .card:hover::before { height: 100%; }
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .card-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+    .card-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.8; }
+    .faq-list { display: flex; flex-direction: column; border: 1px solid var(--border); }
+    .faq-item { padding: 1.5rem; border-bottom: 1px solid var(--border); transition: background 0.2s; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item:hover { background: rgba(0,229,255,0.03); }
+    .faq-q { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); margin-bottom: 0.5rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .faq-q::before { content: 'Q'; color: var(--accent); flex-shrink: 0; }
+    .faq-a { font-size: 0.78rem; color: var(--muted); line-height: 1.8; padding-left: 1.5rem; }
+    .contact-strip { border: 1px solid var(--border); display: flex; flex-direction: column; }
+    .contact-strip-label { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent); padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--panel); }
+    .contact-option-card { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 1.25rem; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); background: transparent; transition: background 0.2s; border-left: 3px solid transparent; }
+    .contact-option-card:last-child { border-bottom: none; }
+    .contact-option-card:hover { background: rgba(0,229,255,0.05); border-left-color: var(--accent); }
+    .contact-option-icon { font-size: 1.75rem; flex-shrink: 0; }
+    .contact-option-text { display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
+    .contact-option-text strong { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-option-text span { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+    .contact-option-arrow { font-size: 1.25rem; color: var(--muted); transition: color 0.2s, transform 0.2s; }
+    .contact-option-card:hover .contact-option-arrow { color: var(--accent); transform: translateX(4px); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+    .footer-brand span { color: var(--accent); }
+    footer p { font-size: 0.65rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    @media (max-width: 768px) { .nav-links { display: none; } .two-col { grid-template-columns: 1fr; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Byte Buster"/>
+    <span>Byte Buster</span>
+  </a>
+  <div class="nav-ticker-wrap">
+    <div class="nav-ticker" id="nav-ticker">
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
+    </div>
+  </div>
+</nav>
+
+
+<div class="wrap">
+  <div class="page-hero">
+    <div class="hero-tag">// PC &amp; Laptop Repair</div>
+    <h1>Reliable Repairs.<em>Fast Turnaround.</em></h1>
+    <p>Whether your system won't boot, is running slow, or acting strange — I'll get you back up and running with honest diagnostics and clear pricing.</p>
+    <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank" class="btn-primary">Book a Repair →</a>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-label">01</span>
+      <h2 class="section-title">What We Can Fix</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-icon">🛑</span>
+        <div class="card-title">Boot &amp; Crash Issues</div>
+        <p class="card-desc">Blue screens, boot failures, random freezes — I diagnose the root cause and fix it right the first time.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🦠</span>
+        <div class="card-title">Virus &amp; Malware Removal</div>
+        <p class="card-desc">Full threat removal and security hardening so your system stays clean and protected going forward.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💽</span>
+        <div class="card-title">Hardware Upgrades</div>
+        <p class="card-desc">SSD upgrades, RAM boosts, GPU swaps — I install and test the right parts for your system and budget.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🪟</span>
+        <div class="card-title">Windows Reinstall</div>
+        <p class="card-desc">Fresh OS installs, driver updates, and bloatware removal without losing your files — done right.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔍</span>
+        <div class="card-title">Diagnostics</div>
+        <p class="card-desc">Power issues, overheating, random crashes — I find the problem before touching anything else.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📦</span>
+        <div class="card-title">Mail-In Repairs</div>
+        <p class="card-desc">Not local? Ship it to us. Secure packaging, progress updates, and fast return shipping anywhere in the U.S.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-label">02</span>
+      <h2 class="section-title">Common Questions</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Do I need to back up my files first?</div>
+        <p class="faq-a">I recommend it, but I'll always ask before erasing or reinstalling anything. Your data is treated with care.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I drop off my PC?</div>
+        <p class="faq-a">Yes! Local drop-off is available by appointment in Eastanollee, GA. Reach out first to schedule a time.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long do repairs take?</div>
+        <p class="faq-a">Most repairs are completed within 1–2 days depending on parts availability and current workload.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I live out of town?</div>
+        <p class="faq-a">No problem — I accept mail-ins nationwide and ship repaired devices back securely.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="two-col">
+      <div>
+        <div class="section-header">
+          <span class="section-label">03</span>
+          <h2 class="section-title">Why Choose Us?</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><div class="faq-q" style="color:var(--accent);font-size:1rem;">No guessing</div><p class="faq-a">I explain every issue clearly and lay out your options before doing any work.</p></div>
+          <div class="faq-item"><div class="faq-q" style="color:var(--accent);font-size:1rem;">Quick turnaround</div><p class="faq-a">Most jobs done within 24–48 hours. I work fast and respect your time.</p></div>
+          <div class="faq-item"><div class="faq-q" style="color:var(--accent);font-size:1rem;">Simple pricing</div><p class="faq-a">No surprise fees. You get a clear estimate before I start.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-header">
+          <span class="section-label">04</span>
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="section-line"></div>
+        </div>
+              <div class="contact-form-wrap">
+        <form action="https://formsubmit.co/agibson2446@yahoo.com" method="POST">
+          <input type="hidden" name="_subject" value="PC Repair Request - Byte Buster"/>
+          <input type="hidden" name="_captcha" value="false"/>
+          <input type="hidden" name="_next" value="https://bytebusterga.github.io/pc-repair.html"/>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required/>
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+            </div>
+          </div>
+          <div class="form-field full">
+            <label for="device">Device Type</label>
+            <select id="device" name="device">
+              <option value="">Select a device...</option>
+              <option>PC / Desktop</option>
+              <option>Laptop</option>
+              <option>PS5</option><option>PS4</option><option>PS3</option><option>PS2</option><option>PS1</option>
+              <option>Xbox Series X/S</option><option>Xbox One</option><option>Xbox 360</option><option>Original Xbox</option>
+              <option>Nintendo Switch</option><option>Nintendo Wii</option><option>Nintendo 64</option>
+              <option>Nintendo 3DS / 2DS</option><option>Game Boy / GBC / GBA</option>
+              <option>Custom Build Request</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="message">Describe the Issue</label>
+            <textarea id="message" name="message" placeholder="What's going on with your device?" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit">Send Request →</button>
+          </div>
+        </form>
+        <div class="backup-contact">
+          <p class="backup-label">// Having trouble with the form? Reach me directly:</p>
+          <div class="backup-links">
+            <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank" class="backup-link">💬 Facebook</a>
+            <a href="mailto:agibson2446@yahoo.com" class="backup-link">📧 Email</a>
+            <a href="tel:7062440698" class="backup-link">📞 706-244-0698</a>
+          </div>
+        </div>
+      </div>
+  </section>
+</div>
+
+<footer>
+  <div><div class="footer-brand">Byte<span>Buster</span></div><p>© 2026 Byte Buster · Eastanollee, GA</p></div>
+  <ul class="footer-links">
+    <li><a href="pc-repair.html">PC Repair</a></li>
+    <li><a href="console-modding.html">Console Mods</a></li>
+    <li><a href="custom-pc-builds.html">Custom Builds</a></li>
+    <li><a href="pricing.html

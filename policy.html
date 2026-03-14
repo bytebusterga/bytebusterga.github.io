@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Policy | Byte Buster — Eastanollee, GA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+    :root { --black: #0a0a0a; --dark: #111214; --panel: #16181c; --border: #2a2d35; --accent: #00e5ff; --text: #e8eaf0; --muted: #7a7f8e; --font-display: 'Barlow Condensed', sans-serif; --font-mono: 'IBM Plex Mono', monospace; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--text); font-family: var(--font-mono); overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.18) saturate(0.5); z-index: -1; }
+    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 9999; }
+    
+    /* NAV TICKER */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; height: 60px; overflow: hidden; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 0 1.5rem; flex-shrink: 0; border-right: 1px solid var(--border); height: 100%; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; white-space: nowrap; }
+    .nav-ticker-wrap { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
+    .nav-ticker { display: flex; align-items: center; white-space: nowrap; animation: navScroll 18s linear infinite; will-change: transform; }
+    .nav-ticker-wrap:hover .nav-ticker { animation-play-state: paused; }
+    .nav-ticker a { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 1.25rem; height: 60px; line-height: 60px; display: inline-block; transition: color 0.2s, background 0.2s; }
+    .nav-ticker a:hover { color: var(--accent); background: rgba(0,229,255,0.08); }
+    .nav-ticker a.active { color: var(--accent); }
+    .nav-sep { color: var(--border); font-size: 0.6rem; padding: 0 0.1rem; user-select: none; }
+    @keyframes navScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; }
+    /* nav ticker styles already defined above */
+    .wrap { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+    .page-hero { padding: 5rem 0 3rem; }
+    .hero-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 0.3rem 0.8rem; margin-bottom: 1.5rem; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 1rem; animation: fadeUp 0.6s ease both; }
+    .page-hero h1 em { font-style: normal; color: var(--accent); display: block; }
+    .page-hero p { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+    section { padding: 3rem 0; }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.2rem); font-weight: 900; text-transform: uppercase; line-height: 1; }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+    .policy-block { border: 1px solid var(--border); background: var(--panel); padding: 1.75rem; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+    .policy-block::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); opacity: 0.4; }
+    .policy-block p { font-size: 0.8rem; color: var(--muted); line-height: 1.9; }
+    .policy-block p strong { color: var(--text); }
+    .policy-list { border: 1px solid var(--border); margin-bottom: 3rem; }
+    .policy-list-item { display: flex; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.78rem; color: var(--muted); line-height: 1.7; align-items: flex-start; }
+    .policy-list-item:last-child { border-bottom: none; }
+    .policy-list-item::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .contact-detail { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); font-size: 0.78rem; color: var(--muted); }
+    .contact-detail:last-child { border-bottom: none; }
+    .contact-detail strong { color: var(--text); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; min-width: 80px; }
+    .contact-detail a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .contact-detail a:hover { color: var(--accent); }
+    footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+    .footer-brand span { color: var(--accent); }
+    footer p { font-size: 0.65rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Byte Buster"/>
+    <span>Byte Buster</span>
+  </a>
+  <div class="nav-ticker-wrap">
+    <div class="nav-ticker" id="nav-ticker">
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
+    </div>
+  </div>
+</nav>
+
+
+<div class="wrap">
+  <div class="page-hero">
+    <div class="hero-tag">// Policies</div>
+    <h1>Clear Rules.<em>No Surprises.</em></h1>
+    <p>Our policies are designed to protect both you and us. Please read through before booking a service or submitting a mail-in request.</p>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-label">01</span>
+      <h2 class="section-title">Parts Ordering</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="policy-block">
+      <p>A security deposit is required and must be paid upfront for all parts ordered. This deposit covers the <strong>full cost of parts</strong> and is <strong>non-refundable</strong> once parts have been ordered. Remaining labor and additional fees are due upon completion and must be paid prior to shipping for mail-in builds.</p>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">02</span>
+      <h2 class="section-title">Mail-In Repairs</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="policy-block">
+      <p>If you choose to mail in your device, please include a completed repair request form with your package. <strong>Repairs will begin only after both the package and form are received.</strong> Payment is required before the repaired device is shipped back to you.</p>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">03</span>
+      <h2 class="section-title">Additional Policies</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="policy-list">
+      <div class="policy-list-item">Estimates are provided prior to repair or build and are subject to change if additional issues are discovered during the process.</div>
+      <div class="policy-list-item">All custom orders are handled with care, but Byte Buster is not responsible for damages incurred during shipping unless shipping insurance is purchased.</div>
+      <div class="policy-list-item">Customers must provide accurate contact information to ensure timely communication throughout the repair or build process.</div>
+      <div class="policy-list-item"><strong style="color:var(--text)">Any devices left unclaimed for more than 30 days become the property of Byte Buster.</strong></div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">04</span>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-detail"><strong>Email</strong><a href="mailto:agibson2446@yahoo.com">agibson2446@yahoo.com</a></div>
+    <div class="contact-detail"><strong>Phone</strong><a href="tel:7062440698">706-244-0698</a></div>
+    <div class="contact-detail"><strong>Location</strong><a href="https://www.google.com/maps/place/300+Camp+Rd,+Eastanollee,+GA+30538" target="_blank">300 Camp Rd, Eastanollee, GA 30538</a></div>
+  </section>
+</div>
+
+<footer>
+  <div><div class="footer-brand">Byte<span>Buster</span></div><p>© 2026 Byte Buster · Eastanollee, GA</p></div>
+  <ul class="footer-links">
+    <li><a href="pc-repair.html">PC Repair</a></li>
+    <li><a href="console-modding.html">Console Mods</a></li>
+    <li><a href="custom-pc-builds.html">Custom Builds</a></li>
+    <li><a href="pricing.html
