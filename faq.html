@@ -190,7 +190,7 @@
           <span class="faq-q-text">What brands and consoles do you work on?</span>
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">We work on Nintendo, PlayStation, and Xbox devices for both repairs and custom mods — including retro consoles like the Wii, PS2, 3DS, and original Xbox.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">I work on Nintendo, PlayStation, and Xbox devices for both repairs and custom mods — including retro consoles like the Wii, PS2, 3DS, and original Xbox.</div></div>
       </div>
     </div>
 
@@ -208,7 +208,7 @@
       </a>
       <a href="mailto:agibson2446@yahoo.com" class="contact-option-card">
         <div class="contact-option-icon">📧</div>
-        <div class="contact-option-text"><strong>Email Us</strong><span>agibson2446@yahoo.com</span></div>
+        <div class="contact-option-text"><strong>Email Me</strong><span>agibson2446@yahoo.com</span></div>
         <div class="contact-option-arrow">→</div>
       </a>
       <a href="tel:7062440698" class="contact-option-card">
@@ -232,8 +232,18 @@
   </ul>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function toggle(btn) {
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     document.querySelectorAll('.faq-toggle').forEach(b => {
-      b.setAttribute
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.nextElementSibling.classList.add('open');
+    }
+  }
+</script>
+</body>
+</html>
