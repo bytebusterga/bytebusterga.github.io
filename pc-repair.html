@@ -17,54 +17,28 @@
     body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.22) saturate(0.6) contrast(1.1); z-index: -1; }
     body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%); pointer-events: none; z-index: 0; }
     
-        /* NAV */
+            /* NAV - FIXED & CENTERED */
     nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      padding: 0;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      padding: 0 1.5rem;
-      flex-shrink: 0;
-      border-right: 1px solid var(--border);
-      height: 100%;
-    }
-    .nav-logo img { height: 32px; width: auto; object-fit: contain; }
-    .nav-logo span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; white-space: nowrap; }
-    
-    
-    
-    
-
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo img { height: 32px; width: auto;  }
-    .nav-logo span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; }
-    /* nav ticker styles already defined above */
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      background: rgba(10,10,10,0.95);
-      backdrop-filter: blur(16px);
+      background: rgba(8,10,15,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      height: 66px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
-      padding: 0 2rem;
     }
     .nav-logo {
       display: flex;
@@ -86,32 +60,29 @@
     .nav-links-wrap {
       display: flex;
       align-items: center;
-      gap: 0;
-      height: 64px;
+      height: 66px;
     }
     .nav-links-wrap a {
       font-family: var(--font-mono);
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted2);
       text-decoration: none;
       padding: 0 1rem;
-      height: 64px;
-      line-height: 64px;
+      height: 66px;
+      line-height: 66px;
       display: inline-block;
       position: relative;
-      transition: color 0.2s;
+      transition: color 0.25s;
       white-space: nowrap;
     }
     .nav-links-wrap a::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
       background: var(--accent);
       transition: width 0.25s ease;
     }
@@ -119,8 +90,6 @@
     .nav-links-wrap a:hover::after { width: 100%; }
     .nav-links-wrap a.active { color: var(--accent); }
     .nav-links-wrap a.active::after { width: 100%; }
-
-    /* HAMBURGER */
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -128,12 +97,12 @@
       cursor: pointer;
       padding: 8px;
       background: none;
-      border: none;
-      z-index: 1001;
+      border: 1px solid var(--border);
+      border-radius: 4px;
     }
     .nav-hamburger span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
       background: var(--text);
       transition: all 0.3s ease;
@@ -141,15 +110,11 @@
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* MOBILE MENU */
     .nav-mobile {
       display: none;
       position: fixed;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: rgba(10,10,10,0.98);
+      top: 66px; left: 0; right: 0;
+      background: rgba(8,10,15,0.99);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       flex-direction: column;
@@ -158,33 +123,27 @@
       opacity: 0;
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
-    .nav-mobile.open {
-      display: flex;
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .nav-mobile.open { display: flex; transform: translateY(0); opacity: 1; }
     .nav-mobile a {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--muted2);
       text-decoration: none;
-      padding: 1.1rem 2rem;
+      padding: 1.2rem 2rem;
       border-bottom: 1px solid var(--border);
       transition: color 0.2s, background 0.2s, padding-left 0.2s;
     }
-    .nav-mobile a:hover, .nav-mobile a.active {
-      color: var(--accent);
-      background: rgba(0,229,255,0.05);
-      padding-left: 2.5rem;
-    }
+    .nav-mobile a:hover, .nav-mobile a.active { color: var(--accent); background: rgba(0,212,245,0.05); padding-left: 2.5rem; }
     .nav-mobile a:last-child { border-bottom: none; }
-
+    /* Push content below fixed nav */
+    body { padding-top: 66px; }
     @media (max-width: 900px) {
       .nav-links-wrap { display: none; }
       .nav-hamburger { display: flex; }
+    }
     }
 
     /* SCROLL ANIMATIONS */
@@ -256,23 +215,25 @@
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="images/logo.png" alt="Byte Buster"/>
-    <span>Byte Buster</span>
-  </a>
-  <div class="nav-links-wrap">
-      <a href="index.html">Home</a>
-      <a href="pc-repair.html" class="active">PC Repair</a>
-      <a href="console-modding.html">Console Mods</a>
-      <a href="custom-pc-builds.html">Custom Builds</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="faq.html">FAQ</a>
-      <a href="about.html">About</a>
-      <a href="policy.html">Policy</a>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Byte Buster"/>
+      <span>Byte Buster</span>
+    </a>
+    <div class="nav-links-wrap">
+        <a href="index.html">Home</a>
+        <a href="pc-repair.html" class="active">PC Repair</a>
+        <a href="console-modding.html">Console Mods</a>
+        <a href="custom-pc-builds.html">Custom Builds</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="policy.html">Policy</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
     <a href="index.html">Home</a>
@@ -450,20 +411,27 @@
   </div>
 </section>
 <footer>
-  <div>
-    <div class="footer-brand">Byte<span>Buster</span></div>
-    <p>© 2026 Byte Buster · 300 Camp Rd, Eastanollee, GA 30538</p>
-    <p style="margin-top:0.3rem;">Serving Toccoa, Cornelia, Lavonia, Hartwell &amp; Northeast GA</p>
+  <div class="footer-inner">
+    <div class="footer-brand-wrap">
+      <div class="footer-brand">Byte<span>Buster</span></div>
+      <p>© 2026 Byte Buster · 300 Camp Rd, Eastanollee, GA 30538</p>
+      <p>Serving Toccoa, Cornelia, Lavonia, Hartwell &amp; Northeast GA</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="pc-repair.html">PC Repair</a></li>
+      <li><a href="console-modding.html">Console Mods</a></li>
+      <li><a href="custom-pc-builds.html">Custom Builds</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="policy.html">Policy</a></li>
+    </ul>
+    <div class="footer-contact">
+      <a href="tel:7062440698">📞 706-244-0698</a>
+      <a href="mailto:agibson2446@yahoo.com">📧 agibson2446@yahoo.com</a>
+      <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank">💬 Facebook</a>
+    </div>
   </div>
-  <ul class="footer-links">
-    <li><a href="pc-repair.html">PC Repair</a></li>
-    <li><a href="console-modding.html">Console Mods</a></li>
-    <li><a href="custom-pc-builds.html">Custom Builds</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="policy.html">Policy</a></li>
-  </ul>
 </footer>
 <script>
   const hamburger = document.getElementById('hamburger');
