@@ -3,164 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQ | Byte Buster PC &amp; Console Repair — Eastanollee, GA</title>
-  <meta name="description" content="Frequently asked questions about Byte Buster PC &amp; console repair. Learn about turnaround times, mail-in service, deposits, and what devices I work on."/>
-  <meta name="robots" content="index, follow"/>
-  <meta name="geo.region" content="US-GA"/>
-  <meta name="geo.placename" content="Eastanollee, GA"/>
+  <title>FAQ | Byte Buster — Eastanollee, GA</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root { --black: #080a0f; --dark: #0d1017; --panel: #131720; --panel2: #181d28; --border: #1e2535; --border2: #2a3347; --accent: #00d4f5; --accent-glow: rgba(0,212,245,0.15); --accent2: #ff4d6d; --text: #edf0f7; --muted: #6b7591; --muted2: #9aa3bc; --font-display: 'Barlow Condensed', sans-serif; --font-mono: 'IBM Plex Mono', monospace; --radius: 2px; --shadow: 0 4px 24px rgba(0,0,0,0.4); }
+    :root { --black: #0a0a0a; --dark: #111214; --panel: #16181c; --border: #2a2d35; --accent: #00e5ff; --text: #e8eaf0; --muted: #7a7f8e; --font-display: 'Barlow Condensed', sans-serif; --font-mono: 'IBM Plex Mono', monospace; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background-color: var(--black); color: var(--text); font-family: var(--font-mono); overflow-x: hidden; }
-    body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.22) saturate(0.6) contrast(1.1); z-index: -1; }
-    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%); pointer-events: none; z-index: 0; }
+    body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.18) saturate(0.5); z-index: -1; }
+    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 9999; }
     
-            /* NAV - FIXED & CENTERED */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(8,10,15,0.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      height: 66px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .nav-logo img { height: 34px; width: auto; object-fit: contain; }
-    .nav-logo span {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .nav-links-wrap {
-      display: flex;
-      align-items: center;
-      height: 66px;
-    }
-    .nav-links-wrap a {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      text-decoration: none;
-      padding: 0 1rem;
-      height: 66px;
-      line-height: 66px;
-      display: inline-block;
-      position: relative;
-      transition: color 0.25s;
-      white-space: nowrap;
-    }
-    .nav-links-wrap a::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width 0.25s ease;
-    }
-    .nav-links-wrap a:hover { color: var(--accent); }
-    .nav-links-wrap a:hover::after { width: 100%; }
-    .nav-links-wrap a.active { color: var(--accent); }
-    .nav-links-wrap a.active::after { width: 100%; }
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      transition: all 0.3s ease;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-mobile {
-      display: none;
-      position: fixed;
-      top: 66px; left: 0; right: 0;
-      background: rgba(8,10,15,0.99);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      flex-direction: column;
-      z-index: 999;
-      transform: translateY(-10px);
-      opacity: 0;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .nav-mobile.open { display: flex; transform: translateY(0); opacity: 1; }
-    .nav-mobile a {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      text-decoration: none;
-      padding: 1.2rem 2rem;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s, background 0.2s, padding-left 0.2s;
-    }
-    .nav-mobile a:hover, .nav-mobile a.active { color: var(--accent); background: rgba(0,212,245,0.05); padding-left: 2.5rem; }
-    .nav-mobile a:last-child { border-bottom: none; }
-    /* Push content below fixed nav */
-    body { padding-top: 66px; }
-    @media (max-width: 900px) {
-      .nav-links-wrap { display: none; }
-      .nav-hamburger { display: flex; }
-    }
-    }
+    /* NAV TICKER */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; height: 60px; overflow: hidden; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 0 1.5rem; flex-shrink: 0; border-right: 1px solid var(--border); height: 100%; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; white-space: nowrap; }
+    .nav-ticker-wrap { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
+    .nav-ticker { display: flex; align-items: center; white-space: nowrap; animation: navScroll 18s linear infinite; will-change: transform; }
+    .nav-ticker-wrap:hover .nav-ticker { animation-play-state: paused; }
+    .nav-ticker a { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 1.25rem; height: 60px; line-height: 60px; display: inline-block; transition: color 0.2s, background 0.2s; }
+    .nav-ticker a:hover { color: var(--accent); background: rgba(0,229,255,0.08); }
+    .nav-ticker a.active { color: var(--accent); }
+    .nav-sep { color: var(--border); font-size: 0.6rem; padding: 0 0.1rem; user-select: none; }
+    @keyframes navScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* SCROLL ANIMATIONS */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 32px; width: auto;  }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; }
+    /* nav ticker styles already defined above */
     .wrap { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
     .page-hero { padding: 5rem 0 3rem; }
     .hero-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 0.3rem 0.8rem; margin-bottom: 1.5rem; }
@@ -205,58 +75,68 @@
     .footer-links a:hover { color: var(--accent); }
     @media (max-width: 768px) { .nav-links { display: none; } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 480px) { .btn-primary, .btn-secondary { font-size: 0.9rem; padding: 0.8rem 1.5rem; } .page-hero h1 { font-size: clamp(2rem, 10vw, 3rem); } }
   </style>
 </head>
 <body>
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <img src="images/logo.png" alt="Byte Buster"/>
-      <span>Byte Buster</span>
-    </a>
-    <div class="nav-links-wrap">
-        <a href="index.html">Home</a>
-        <a href="pc-repair.html">PC Repair</a>
-        <a href="console-modding.html">Console Mods</a>
-        <a href="custom-pc-builds.html">Custom Builds</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="faq.html" class="active">FAQ</a>
-        <a href="about.html">About</a>
-        <a href="policy.html">Policy</a>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Byte Buster"/>
+    <span>Byte Buster</span>
+  </a>
+  <div class="nav-ticker-wrap">
+    <div class="nav-ticker" id="nav-ticker">
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
+      <a href="index.html">Home</a>
+      <span class="nav-sep">•</span>
+      <a href="pc-repair.html">PC Repair</a>
+      <span class="nav-sep">•</span>
+      <a href="console-modding.html">Console Mods</a>
+      <span class="nav-sep">•</span>
+      <a href="custom-pc-builds.html">Custom Builds</a>
+      <span class="nav-sep">•</span>
+      <a href="pricing.html">Pricing</a>
+      <span class="nav-sep">•</span>
+      <a href="faq.html">FAQ</a>
+      <span class="nav-sep">•</span>
+      <a href="about.html">About</a>
+      <span class="nav-sep">•</span>
+      <a href="policy.html">Policy</a>
+      <span class="nav-sep">•</span>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-    <a href="index.html">Home</a>
-    <a href="pc-repair.html">PC Repair</a>
-    <a href="console-modding.html">Console Mods</a>
-    <a href="custom-pc-builds.html">Custom Builds</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="faq.html" class="active">FAQ</a>
-    <a href="about.html">About</a>
-    <a href="policy.html">Policy</a>
-</div>
 
 
 <div class="wrap">
   <div class="page-hero">
-    <div class="hero-tag">// FAQ — Eastanollee, GA</div>
+    <div class="hero-tag">// Frequently Asked Questions</div>
     <h1>Got<em>Questions?</em></h1>
     <p>Here are the most common things people ask before booking. Don't see your question? Reach out directly.</p>
   </div>
 
   <section>
-    <div class="section-header reveal">
+    <div class="section-header">
       <span class="section-label">01</span>
       <h2 class="section-title">General</h2>
       <div class="section-line"></div>
     </div>
     <div class="faq-list">
-      <div class="faq-item reveal">
+      <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" onclick="toggle(this)">
           <span class="faq-q-label">Q</span>
           <span class="faq-q-text">What areas do you service?</span>
@@ -264,7 +144,7 @@
         </button>
         <div class="faq-answer"><div class="faq-answer-inner">Local services are available in Eastanollee, GA. We also accept mail-in repair and build requests from anywhere in the U.S.</div></div>
       </div>
-      <div class="faq-item reveal">
+      <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" onclick="toggle(this)">
           <span class="faq-q-label">Q</span>
           <span class="faq-q-text">How long does a typical repair take?</span>
@@ -272,7 +152,7 @@
         </button>
         <div class="faq-answer"><div class="faq-answer-inner">Most repairs are completed within 3–5 business days depending on parts availability and current workload. Rush service is available for an additional fee.</div></div>
       </div>
-      <div class="faq-item reveal">
+      <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" onclick="toggle(this)">
           <span class="faq-q-label">Q</span>
           <span class="faq-q-text">Do I need to back up my files before bringing in my device?</span>
@@ -282,13 +162,13 @@
       </div>
     </div>
 
-    <div class="section-header reveal">
+    <div class="section-header">
       <span class="section-label">02</span>
       <h2 class="section-title">Custom Builds &amp; Console Mods</h2>
       <div class="section-line"></div>
     </div>
     <div class="faq-list">
-      <div class="faq-item reveal">
+      <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" onclick="toggle(this)">
           <span class="faq-q-label">Q</span>
           <span class="faq-q-text">Is a deposit required for custom PC builds?</span>
@@ -296,7 +176,7 @@
         </button>
         <div class="faq-answer"><div class="faq-answer-inner">Yes. A non-refundable deposit covering the full cost of parts is required once parts are ordered. The remaining balance (labor + any additional fees) is due before pickup or shipping.</div></div>
       </div>
-      <div class="faq-item reveal">
+      <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" onclick="toggle(this)">
           <span class="faq-q-label">Q</span>
           <span class="faq-q-text">Can I send my console in for modding?</span>
@@ -304,17 +184,17 @@
         </button>
         <div class="faq-answer"><div class="faq-answer-inner">Absolutely. I accept mail-in console modding requests nationwide. Check the Console Modding page for packaging instructions.</div></div>
       </div>
-      <div class="faq-item reveal">
+      <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" onclick="toggle(this)">
           <span class="faq-q-label">Q</span>
           <span class="faq-q-text">What brands and consoles do you work on?</span>
           <span class="faq-chevron">▼</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">I work on Nintendo, PlayStation, and Xbox devices for both repairs and custom mods — including retro consoles like the Wii, PS2, 3DS, and original Xbox.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">We work on Nintendo, PlayStation, and Xbox devices for both repairs and custom mods — including retro consoles like the Wii, PS2, 3DS, and original Xbox.</div></div>
       </div>
     </div>
 
-    <div class="section-header reveal">
+    <div class="section-header">
       <span class="section-label">03</span>
       <h2 class="section-title">Still Have Questions?</h2>
       <div class="section-line"></div>
@@ -326,9 +206,9 @@
         <div class="contact-option-text"><strong>Message on Facebook</strong><span>I reply quickly — ask me anything.</span></div>
         <div class="contact-option-arrow">→</div>
       </a>
-      <a href="/cdn-cgi/l/email-protection#08696f616a7b67663a3c3c3e487169606767266b6765" class="contact-option-card">
+      <a href="mailto:agibson2446@yahoo.com" class="contact-option-card">
         <div class="contact-option-icon">📧</div>
-        <div class="contact-option-text"><strong>Email Me</strong><span><span class="__cf_email__" data-cfemail="6100060803120e0f53555557211800090e0e4f020e0c">[email&#160;protected]</span></span></div>
+        <div class="contact-option-text"><strong>Email Us</strong><span>agibson2446@yahoo.com</span></div>
         <div class="contact-option-arrow">→</div>
       </a>
       <a href="tel:7062440698" class="contact-option-card">
@@ -340,83 +220,20 @@
   </section>
 </div>
 
-
-<!-- SERVICE AREA -->
-<section style="padding: 3rem 2rem; max-width: 1100px; margin: 0 auto;">
-  <div class="reveal section-header">
-    <span class="section-label">// Service Area</span>
-    <h2 class="section-title">Serving Northeast Georgia</h2>
-    <div class="section-line"></div>
-  </div>
-  <div style="border: 1px solid var(--border); background: var(--panel); padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="reveal">
-    <div>
-      <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 1rem;">Local Drop-Off</div>
-      <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.9;">I personally handle every repair and build right here in <strong style="color:var(--text)">Eastanollee, GA</strong> (Stephens County). Customers drive to me from across Northeast Georgia including <strong style="color:var(--text)">Toccoa, Toccoa Falls, Cornelia, Lavonia, Hartwell, Martin,</strong> and <strong style="color:var(--text)">Westminster, SC</strong>. If you are within driving distance, drop-off is available by appointment.</p>
-    </div>
-    <div>
-      <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 1rem;">Nationwide Mail-In</div>
-      <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.9;">Not in the area? No problem. I accept mail-in repairs and custom build requests from anywhere in the United States. Ship your device, I fix it personally, and send it back fast. Every job handled by one experienced technician — not passed around to staff.</p>
-    </div>
-  </div>
-  <div style="margin-top: 1px; border: 1px solid var(--border); border-top: none; background: rgba(0,229,255,0.04); padding: 1rem 2rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em;">
-    📍 300 Camp Rd, Eastanollee, GA 30538 &nbsp;•&nbsp; 📞 706-244-0698 &nbsp;•&nbsp; Stephens County, GA
-  </div>
-</section>
 <footer>
-  <div class=footer-inner>
-    <div class=footer-brand-wrap>
-      <div class=footer-brand>Byte<span>Buster</span></div>
-      <p>Your local tech repair expert in Eastanollee, GA.<br/>PC repair, console modding, custom builds &amp; more.<br/>Serving Northeast Georgia &amp; nationwide via mail-in.</p>
-    </div>
-    <div>
-      <span class=footer-col-title>Pages</span>
-      <ul class=footer-links>
-        <li><a href=index.html>Home</a></li>
-        <li><a href=pc-repair.html>PC Repair</a></li>
-        <li><a href=console-modding.html>Console Mods</a></li>
-        <li><a href=custom-pc-builds.html>Custom Builds</a></li>
-        <li><a href=pricing.html>Pricing</a></li>
-        <li><a href=faq.html>FAQ</a></li>
-        <li><a href=about.html>About</a></li>
-        <li><a href=policy.html>Policy</a></li>
-      </ul>
-    </div>
-    <div>
-      <span class=footer-col-title>Contact</span>
-      <div class=footer-contact>
-        <a href=tel:7062440698>📞 706-244-0698</a>
-        <a href=mailto:agibson2446@yahoo.com>📧 agibson2446@yahoo.com</a>
-        <a href=https://www.facebook.com/profile.php?id=61576712042698 target=_blank>💬 Facebook</a>
-        <a href=about.html>📍 300 Camp Rd, Eastanollee, GA</a>
-      </div>
-    </div>
-  </div>
-  <div class=footer-bottom>
-    <p>© 2026 Byte Buster · Eastanollee, GA 30538 · Stephens County</p>
-    <p>Serving Toccoa · Cornelia · Lavonia · Hartwell · Northeast GA</p>
-  </div>
+  <div><div class="footer-brand">Byte<span>Buster</span></div><p>© 2026 Byte Buster · Eastanollee, GA</p></div>
+  <ul class="footer-links">
+    <li><a href="pc-repair.html">PC Repair</a></li>
+    <li><a href="console-modding.html">Console Mods</a></li>
+    <li><a href="custom-pc-builds.html">Custom Builds</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="policy.html">Policy</a></li>
+  </ul>
 </footer>
-<script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function toggle(btn) {
-    const expanded = btn.getAttribute("aria-expanded") === "true";
-    document.querySelectorAll(".faq-toggle").forEach(b => {
-      b.setAttribute("aria-expanded", "false");
-      b.nextElementSibling.classList.remove("open");
-    });
-    if (!expanded) {
-      btn.setAttribute("aria-expanded", "true");
-      btn.nextElementSibling.classList.add("open");
-    }
-  }
-  const hamburger = document.getElementById("hamburger");
-  const navMobile = document.getElementById("nav-mobile");
-  if (hamburger && navMobile) {
-    hamburger.addEventListener("click", () => { hamburger.classList.toggle("open"); navMobile.classList.toggle("open"); });
-    navMobile.querySelectorAll("a").forEach(a => { a.addEventListener("click", () => { hamburger.classList.remove("open"); navMobile.classList.remove("open"); }); });
-  }
-  const reveals = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-toggle').forEach(b => {
+      b.setAttribute
