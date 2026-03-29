@@ -3,35 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pricing | Byte Buster — Eastanollee, GA</title>
-<meta name="description" content="Transparent PC repair pricing in Eastanollee, GA — diagnostics, virus removal, hardware upgrades, data recovery & more. Honest rates, no hidden fees. Serving Toccoa, Lavonia & Northeast Georgia.">
+  <title>Repair Pricing | Byte Buster — Eastanollee &amp; Toccoa, GA</title>
+  <meta name="description" content="Transparent PC &amp; console repair pricing from Byte Buster in Eastanollee, GA. No hidden fees. Honest estimates before any work begins."/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="geo.region" content="US-GA"/>
+  <meta name="geo.placename" content="Eastanollee, GA"/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root { --black: #0a0a0a; --dark: #111214; --panel: #16181c; --border: #2a2d35; --accent: #00e5ff; --text: #e8eaf0; --muted: #7a7f8e; --font-display: 'Barlow Condensed', sans-serif; --font-mono: 'IBM Plex Mono', monospace; }
+    :root { --black: #080a0f; --dark: #0d1017; --panel: #131720; --panel2: #181d28; --border: #1e2535; --border2: #2a3347; --accent: #00d4f5; --accent-glow: rgba(0,212,245,0.15); --accent2: #ff4d6d; --text: #edf0f7; --muted: #6b7591; --muted2: #9aa3bc; --font-display: 'Barlow Condensed', sans-serif; --font-mono: 'IBM Plex Mono', monospace; --radius: 2px; --shadow: 0 4px 24px rgba(0,0,0,0.4); }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background-color: var(--black); color: var(--text); font-family: var(--font-mono); overflow-x: hidden; }
-    body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.18) saturate(0.5); z-index: -1; }
-    body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 9999; }
+    body::after { content: ''; position: fixed; inset: 0; background: url('images/background.jpg') center/cover no-repeat; filter: brightness(0.22) saturate(0.6) contrast(1.1); z-index: -1; }
+    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%); pointer-events: none; z-index: 0; }
     
-    /* NAV TICKER */
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; height: 60px; overflow: hidden; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 0 1.5rem; flex-shrink: 0; border-right: 1px solid var(--border); height: 100%; }
-    .nav-logo img { height: 32px; width: auto;  }
+        /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      padding: 0;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 0 1.5rem;
+      flex-shrink: 0;
+      border-right: 1px solid var(--border);
+      height: 100%;
+    }
+    .nav-logo img { height: 32px; width: auto; object-fit: contain; }
     .nav-logo span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; white-space: nowrap; }
-    .nav-ticker-wrap { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
-    .nav-ticker { display: flex; align-items: center; white-space: nowrap; animation: navScroll 18s linear infinite; will-change: transform; }
-    .nav-ticker-wrap:hover .nav-ticker { animation-play-state: paused; }
-    .nav-ticker a { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 1.25rem; height: 60px; line-height: 60px; display: inline-block; transition: color 0.2s, background 0.2s; }
-    .nav-ticker a:hover { color: var(--accent); background: rgba(0,229,255,0.08); }
-    .nav-ticker a.active { color: var(--accent); }
-    .nav-sep { color: var(--border); font-size: 0.6rem; padding: 0 0.1rem; user-select: none; }
-    @keyframes navScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    
+    
+    
+    
 
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { height: 32px; width: auto;  }
     .nav-logo span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; letter-spacing: 0.08em; color: var(--text); text-transform: uppercase; }
     /* nav ticker styles already defined above */
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo img { height: 34px; width: auto; object-fit: contain; }
+    .nav-logo span {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .nav-links-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      height: 64px;
+    }
+    .nav-links-wrap a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0 1rem;
+      height: 64px;
+      line-height: 64px;
+      display: inline-block;
+      position: relative;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links-wrap a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+    .nav-links-wrap a:hover { color: var(--accent); }
+    .nav-links-wrap a:hover::after { width: 100%; }
+    .nav-links-wrap a.active { color: var(--accent); }
+    .nav-links-wrap a.active::after { width: 100%; }
+
+    /* HAMBURGER */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      z-index: 999;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .nav-mobile.open {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .nav-mobile a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, background 0.2s, padding-left 0.2s;
+    }
+    .nav-mobile a:hover, .nav-mobile a.active {
+      color: var(--accent);
+      background: rgba(0,229,255,0.05);
+      padding-left: 2.5rem;
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+
+    @media (max-width: 900px) {
+      .nav-links-wrap { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
     .page-hero { padding: 5rem 0 3rem; }
     .hero-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 0.3rem 0.8rem; margin-bottom: 1.5rem; }
@@ -43,15 +213,15 @@
     .section-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
     .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; text-transform: uppercase; line-height: 1; }
     .section-line { flex: 1; height: 1px; background: var(--border); }
-    .price-table { border: 1px solid var(--border); width: 100%; max-width: 675px; border-collapse: collapse; margin-bottom: 3rem; margin-left: auto; margin-right: auto; }
-    .price-table th { background: var(--panel); font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); padding: 1rem 1.5rem; text-align: center; border-bottom: 1px solid var(--border); }
-   .price-table td { padding: 0.9rem 1.5rem; font-size: 0.8rem; color: var(--muted); border-bottom: 1px solid var(--border); vertical-align: top; text-align: center; }
+    .price-table { border: 1px solid var(--border); width: 100%; border-collapse: collapse; margin-bottom: 3rem; }
+    .price-table th { background: var(--panel); font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .price-table td { padding: 0.9rem 1.5rem; font-size: 0.8rem; color: var(--muted); border-bottom: 1px solid var(--border); vertical-align: top; }
     .price-table tr:last-child td { border-bottom: none; }
     .price-table tr:hover td { background: rgba(0,229,255,0.03); }
     .price-table .price { color: var(--text); font-weight: 600; white-space: nowrap; }
     .price-table .note { font-size: 0.7rem; color: var(--muted); font-style: italic; margin-top: 0.2rem; }
-   .base-grid { display: grid; grid-template-columns: repeat(2, 250px); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 3rem; width: 500px; margin: 0 auto 3rem auto; }
-    .base-card { background: var(--panel); padding: 1rem 1.5rem; text-align: center; }
+    .base-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 3rem; }
+    .base-card { background: var(--panel); padding: 1.5rem; }
     .base-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
     .base-value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1; }
     .base-sub { font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; }
@@ -60,7 +230,7 @@
     .cta-bar { border: 1px solid var(--border); background: var(--panel); padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 4rem; }
     .cta-bar p { font-size: 0.85rem; color: var(--muted); max-width: 500px; line-height: 1.6; }
     .btn-primary { display: inline-block; background: var(--accent); color: var(--black); font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); transition: background 0.2s, transform 0.15s; white-space: nowrap; }
-    .btn-primary:hover { background: #33eaff; transform: translateY(-2px); }
+    .btn-primary:hover { background: #33eeff; transform: translateY(-3px); box-shadow: 0 0 30px rgba(0,212,245,0.4); }
     footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     .footer-brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
     .footer-brand span { color: var(--accent); }
@@ -70,6 +240,7 @@
     .footer-links a:hover { color: var(--accent); }
     @media (max-width: 768px) { .nav-links { display: none; } .cta-bar { flex-direction: column; } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 480px) { .btn-primary, .btn-secondary { font-size: 0.9rem; padding: 0.8rem 1.5rem; } .page-hero h1 { font-size: clamp(2rem, 10vw, 3rem); } }
   </style>
 </head>
 <body>
@@ -78,59 +249,41 @@
     <img src="images/logo.png" alt="Byte Buster"/>
     <span>Byte Buster</span>
   </a>
-  <div class="nav-ticker-wrap">
-    <div class="nav-ticker" id="nav-ticker">
+  <div class="nav-links-wrap">
       <a href="index.html">Home</a>
-      <span class="nav-sep">•</span>
       <a href="pc-repair.html">PC Repair</a>
-      <span class="nav-sep">•</span>
       <a href="console-modding.html">Console Mods</a>
-      <span class="nav-sep">•</span>
       <a href="custom-pc-builds.html">Custom Builds</a>
-      <span class="nav-sep">•</span>
-      <a href="pricing.html">Pricing</a>
-      <span class="nav-sep">•</span>
+      <a href="pricing.html" class="active">Pricing</a>
       <a href="faq.html">FAQ</a>
-      <span class="nav-sep">•</span>
       <a href="about.html">About</a>
-      <span class="nav-sep">•</span>
       <a href="policy.html">Policy</a>
-      <span class="nav-sep">•</span>
-      <a href="index.html">Home</a>
-      <span class="nav-sep">•</span>
-      <a href="pc-repair.html">PC Repair</a>
-      <span class="nav-sep">•</span>
-      <a href="console-modding.html">Console Mods</a>
-      <span class="nav-sep">•</span>
-      <a href="custom-pc-builds.html">Custom Builds</a>
-      <span class="nav-sep">•</span>
-      <a href="pricing.html">Pricing</a>
-      <span class="nav-sep">•</span>
-      <a href="faq.html">FAQ</a>
-      <span class="nav-sep">•</span>
-      <a href="about.html">About</a>
-      <span class="nav-sep">•</span>
-      <a href="policy.html">Policy</a>
-      <span class="nav-sep">•</span>
-    </div>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="pc-repair.html">PC Repair</a>
+    <a href="console-modding.html">Console Mods</a>
+    <a href="custom-pc-builds.html">Custom Builds</a>
+    <a href="pricing.html" class="active">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+    <a href="policy.html">Policy</a>
+</div>
 
 
 <div class="wrap">
   <div class="page-hero">
-    <div class="hero-tag">// Transparent Pricing</div>
+    <div class="hero-tag">// Transparent Pricing — Eastanollee, GA</div>
     <h1>Honest Rates.<em>No Surprises.</em></h1>
     <p>I believe in up-front pricing. Here's exactly what I charge — no hidden fees, no upsells. Prices below do not include parts cost.</p>
   </div>
 
-   <div class="notice-box" style="margin-bottom:2rem;">
-      <strong style="display:block;margin-bottom:0.5rem;">⚠ Please Read Before Requesting a Quote</strong>
-      All quotes provided are <strong>estimates only</strong> — final price will vary based on parts availability and services performed. Labor is based on time spent on disassembly and reassembly after all repairs are made and all clean up is finished. You will receive a clear estimate before any work begins.
-    </div>
-  
   <section>
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-label">01</span>
       <h2 class="section-title">Base Rates</h2>
       <div class="section-line"></div>
@@ -148,7 +301,7 @@
       </div>
     </div>
 
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-label">02</span>
       <h2 class="section-title">Standard Services</h2>
       <div class="section-line"></div>
@@ -165,7 +318,7 @@
       </tbody>
     </table>
 
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-label">03</span>
       <h2 class="section-title">Hardware Upgrades</h2>
       <div class="section-line"></div>
@@ -181,7 +334,7 @@
       </tbody>
     </table>
 
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-label">04</span>
       <h2 class="section-title">Data &amp; Storage</h2>
       <div class="section-line"></div>
@@ -196,7 +349,7 @@
       </tbody>
     </table>
 
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="section-label">05</span>
       <h2 class="section-title">Storage &amp; Rush</h2>
       <div class="section-line"></div>
@@ -209,54 +362,80 @@
       </tbody>
     </table>
 
-      <div class="cta-bar">
+    <div class="notice-box">
+      <strong>Note:</strong> All prices listed are for labor only and do not include the cost of parts. You'll receive a clear estimate before any work begins. Custom or complex jobs may vary — reach out for a quote.
+    </div>
+
+    <div class="cta-bar">
       <p>Need something custom or have questions about pricing? Message me directly and I'll get you a quote fast.</p>
-     <a href="https://www.facebook.com/bytebusterga" target="_blank" class="btn-primary">Get a Quote →</a>
+      <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank" class="btn-primary">Get a Quote →</a>
     </div>
   </section>
 </div>
 
+
+<!-- SERVICE AREA -->
+<section style="padding: 3rem 2rem; max-width: 1100px; margin: 0 auto;">
+  <div class="reveal section-header">
+    <span class="section-label">// Service Area</span>
+    <h2 class="section-title">Serving Northeast Georgia</h2>
+    <div class="section-line"></div>
+  </div>
+  <div style="border: 1px solid var(--border); background: var(--panel); padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="reveal">
+    <div>
+      <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 1rem;">Local Drop-Off</div>
+      <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.9;">I personally handle every repair and build right here in <strong style="color:var(--text)">Eastanollee, GA</strong> (Stephens County). Customers drive to me from across Northeast Georgia including <strong style="color:var(--text)">Toccoa, Toccoa Falls, Cornelia, Lavonia, Hartwell, Martin,</strong> and <strong style="color:var(--text)">Westminster, SC</strong>. If you are within driving distance, drop-off is available by appointment.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 1rem;">Nationwide Mail-In</div>
+      <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.9;">Not in the area? No problem. I accept mail-in repairs and custom build requests from anywhere in the United States. Ship your device, I fix it personally, and send it back fast. Every job handled by one experienced technician — not passed around to staff.</p>
+    </div>
+  </div>
+  <div style="margin-top: 1px; border: 1px solid var(--border); border-top: none; background: rgba(0,229,255,0.04); padding: 1rem 2rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em;">
+    📍 300 Camp Rd, Eastanollee, GA 30538 &nbsp;•&nbsp; 📞 706-244-0698 &nbsp;•&nbsp; Stephens County, GA
+  </div>
+</section>
 <footer>
-  <div><div class="footer-brand">Byte<span>Buster</span></div><p>© 2026 Byte Buster · Eastanollee, GA</p></div>
+  <div>
+    <div class="footer-brand">Byte<span>Buster</span></div>
+    <p>© 2026 Byte Buster · 300 Camp Rd, Eastanollee, GA 30538</p>
+    <p style="margin-top:0.3rem;">Serving Toccoa, Cornelia, Lavonia, Hartwell &amp; Northeast GA</p>
+  </div>
   <ul class="footer-links">
     <li><a href="pc-repair.html">PC Repair</a></li>
     <li><a href="console-modding.html">Console Mods</a></li>
     <li><a href="custom-pc-builds.html">Custom Builds</a></li>
     <li><a href="pricing.html">Pricing</a></li>
     <li><a href="faq.html">FAQ</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="policy.html">Policy</a></li>
   </ul>
 </footer>
-
 <script>
-  (function() {
-    const links = document.querySelectorAll('.nav-links a');
-    const spotlight = document.getElementById('nav-spotlight');
-    if (!spotlight || links.length === 0) return;
-    const nav = spotlight.closest('ul');
-
-    function moveSpotlight(el) {
-      const navRect = nav.getBoundingClientRect();
-      const elRect = el.getBoundingClientRect();
-      spotlight.style.opacity = '1';
-      spotlight.style.left = (elRect.left - navRect.left) + 'px';
-      spotlight.style.width = elRect.width + 'px';
-    }
-
-    links.forEach(link => {
-      link.addEventListener('mouseenter', () => moveSpotlight(link));
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  if (hamburger && navMobile) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMobile.classList.toggle('open');
     });
-
-    nav.addEventListener('mouseleave', () => {
-      spotlight.style.opacity = '0';
+    navMobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMobile.classList.remove('open');
+      });
     });
-
-    // Show spotlight on active link on load
-    const active = document.querySelector('.nav-links a.active');
-    if (active) {
-      setTimeout(() => moveSpotlight(active), 100);
-    }
-  })();
+  }
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
