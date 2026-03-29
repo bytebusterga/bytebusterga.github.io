@@ -357,52 +357,48 @@
   </div>
 </section>
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand-wrap">
-      <div class="footer-brand">Byte<span>Buster</span></div>
-      <p>© 2026 Byte Buster · 300 Camp Rd, Eastanollee, GA 30538</p>
-      <p>Serving Toccoa, Cornelia, Lavonia, Hartwell &amp; Northeast GA</p>
+  <div class=footer-inner>
+    <div class=footer-brand-wrap>
+      <div class=footer-brand>Byte<span>Buster</span></div>
+      <p>Your local tech repair expert in Eastanollee, GA.<br/>PC repair, console modding, custom builds &amp; more.<br/>Serving Northeast Georgia &amp; nationwide via mail-in.</p>
     </div>
-    <ul class="footer-links">
-      <li><a href="pc-repair.html">PC Repair</a></li>
-      <li><a href="console-modding.html">Console Mods</a></li>
-      <li><a href="custom-pc-builds.html">Custom Builds</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="policy.html">Policy</a></li>
-    </ul>
-    <div class="footer-contact">
-      <a href="tel:7062440698">📞 706-244-0698</a>
-      <a href="mailto:agibson2446@yahoo.com">📧 agibson2446@yahoo.com</a>
-      <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank">💬 Facebook</a>
+    <div>
+      <span class=footer-col-title>Pages</span>
+      <ul class=footer-links>
+        <li><a href=index.html>Home</a></li>
+        <li><a href=pc-repair.html>PC Repair</a></li>
+        <li><a href=console-modding.html>Console Mods</a></li>
+        <li><a href=custom-pc-builds.html>Custom Builds</a></li>
+        <li><a href=pricing.html>Pricing</a></li>
+        <li><a href=faq.html>FAQ</a></li>
+        <li><a href=about.html>About</a></li>
+        <li><a href=policy.html>Policy</a></li>
+      </ul>
     </div>
+    <div>
+      <span class=footer-col-title>Contact</span>
+      <div class=footer-contact>
+        <a href=tel:7062440698>📞 706-244-0698</a>
+        <a href=mailto:agibson2446@yahoo.com>📧 agibson2446@yahoo.com</a>
+        <a href=https://www.facebook.com/profile.php?id=61576712042698 target=_blank>💬 Facebook</a>
+        <a href=about.html>📍 300 Camp Rd, Eastanollee, GA</a>
+      </div>
+    </div>
+  </div>
+  <div class=footer-bottom>
+    <p>© 2026 Byte Buster · Eastanollee, GA 30538 · Stephens County</p>
+    <p>Serving Toccoa · Cornelia · Lavonia · Hartwell · Northeast GA</p>
   </div>
 </footer>
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const navMobile = document.getElementById('nav-mobile');
+  const hamburger = document.getElementById("hamburger");
+  const navMobile = document.getElementById("nav-mobile");
   if (hamburger && navMobile) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navMobile.classList.toggle('open');
-    });
-    navMobile.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navMobile.classList.remove('open');
-      });
-    });
+    hamburger.addEventListener("click", () => { hamburger.classList.toggle("open"); navMobile.classList.toggle("open"); });
+    navMobile.querySelectorAll("a").forEach(a => { a.addEventListener("click", () => { hamburger.classList.remove("open"); navMobile.classList.remove("open"); }); });
   }
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+  const reveals = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 </script>
 </body>
