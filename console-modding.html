@@ -25,8 +25,27 @@
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden;padding-top:60px}
 
-    /* BG PHOTO */
-    body::after{content:'';position:fixed;inset:0;background:url('images/background.jpg') center/cover no-repeat;filter:brightness(0.28) saturate(0.7);z-index:-1}
+    /* CSS CIRCUIT BOARD BACKGROUND */
+    body::after{
+      content:'';
+      position:fixed;inset:0;z-index:-1;
+      background-color:#080b12;
+      background-image:
+        linear-gradient(rgba(43,159,217,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(43,159,217,0.06) 1px, transparent 1px),
+        linear-gradient(rgba(43,159,217,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(43,159,217,0.03) 1px, transparent 1px);
+      background-size:80px 80px, 80px 80px, 20px 20px, 20px 20px;
+      background-position:-1px -1px,-1px -1px,-1px -1px,-1px -1px;
+    }
+    body::before{
+      content:'';
+      position:fixed;inset:0;z-index:-1;
+      background:radial-gradient(ellipse at 20% 50%, rgba(43,159,217,0.08) 0%, transparent 60%),
+                 radial-gradient(ellipse at 80% 20%, rgba(43,159,217,0.05) 0%, transparent 50%),
+                 radial-gradient(ellipse at 60% 80%, rgba(0,0,0,0.4) 0%, transparent 60%);
+      pointer-events:none;
+    }
 
     /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;background:rgba(8,11,18,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -118,10 +137,10 @@
     @media(max-width:700px){.process-inner{grid-template-columns:repeat(2,1fr)}.process-step:nth-child(2){border-right:none}.process-step:nth-child(3){border-top:1px solid var(--border)}.process-step:nth-child(4){border-top:1px solid var(--border);border-right:none}}
 
     /* GUARANTEE */
-    .guarantee{border:1px solid rgba(0,200,240,0.2);background:rgba(0,200,240,0.04);padding:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+    .guarantee{padding:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
     .guarantee-icon{font-family:var(--display);font-size:3rem;font-weight:900;color:var(--accent);line-height:1;flex-shrink:0}
-    .guarantee-title{font-family:var(--display);font-size:1.4rem;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.4rem}
-    .guarantee-text{font-size:0.82rem;color:var(--muted2);line-height:1.8;max-width:600px}
+    .guarantee-title{font-family:var(--display);font-size:1.4rem;font-weight:700;text-transform:none;letter-spacing:0em;margin-bottom:0.4rem;color:#fff}
+    .guarantee-text{font-size:0.85rem;color:#d0dae8;line-height:1.85;max-width:600px}
 
     /* REVIEWS */
     .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.5rem}
@@ -200,11 +219,11 @@
 
     /* TABLE */
     .data-table{width:100%;border-collapse:collapse;border:1px solid var(--border)}
-    .data-table th{background:var(--surface2);font-family:var(--display);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);padding:0.9rem 1.25rem;text-align:left;border-bottom:1px solid var(--border)}
-    .data-table td{padding:0.85rem 1.25rem;font-size:0.8rem;color:var(--muted2);border-bottom:1px solid var(--border);vertical-align:top}
+    .data-table th{background:rgba(43,159,217,0.12);font-family:var(--display);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#fff;padding:0.9rem 1.25rem;text-align:left;border-bottom:1px solid var(--border)}
+    .data-table td{padding:0.85rem 1.25rem;font-size:0.82rem;color:#c8d4e4;border-bottom:1px solid var(--border);vertical-align:top;background:rgba(14,18,28,0.9)}
     .data-table tr:last-child td{border-bottom:none}
-    .data-table tr:hover td{background:var(--accent-g);color:var(--text)}
-    .data-table .price{color:var(--text);font-weight:600;white-space:nowrap}
+    .data-table tr:hover td{background:rgba(43,159,217,0.1);color:#fff}
+    .data-table .price{color:#fff;font-weight:600;white-space:nowrap}
     .data-table .note{font-size:0.7rem;color:var(--muted);font-style:italic;margin-top:0.2rem}
     .data-table .badge{display:inline-block;font-size:0.58rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,200,240,0.25);padding:0.15rem 0.5rem}
     .table-section-row td{background:rgba(0,200,240,0.06);color:var(--accent);font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;padding:0.5rem 1.25rem;border-bottom:1px solid var(--border)}
@@ -224,7 +243,7 @@
     .footer-contact-list a:hover{color:var(--accent)}
     .footer-bottom{border-top:1px solid var(--border);max-width:1140px;margin:0 auto;padding:0.85rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
     .footer-bottom p{font-size:0.65rem;color:var(--muted)}
-    @media(max-width:768px){.footer-main{grid-template-columns:1fr;gap:2rem;padding:2rem 1.5rem 1rem}.footer-bottom{flex-direction:column;text-align:center;padding:1rem 1.5rem}}
+    @media(max-width:768px){.footer-main{grid-template-columns:1fr 1fr;gap:1.5rem;padding:1.5rem}.footer-bottom{flex-direction:column;text-align:center;padding:0.85rem 1.5rem}}@media(max-width:480px){.footer-main{grid-template-columns:1fr;gap:1.25rem}}
 
     /* SCROLL REVEAL */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease}
@@ -438,7 +457,8 @@
   <div class="footer-main">
     <div>
       <div class="footer-brand">Byte<span>Buster</span></div>
-      <p class="footer-tagline">Your local tech repair expert in Eastanollee, GA.<br/>PC repair, console modding, custom builds &amp; more.<br/>Serving Northeast Georgia &amp; nationwide via mail-in.</p>
+      <p class="footer-tagline">Expert Repair. Honest Pricing. Personal Service.</p>
+      <p class="footer-tagline">Eastanollee, GA · Stephens County<br/>Serving Northeast Georgia &amp; nationwide.</p>
     </div>
     <div>
       <span class="footer-col-label">Pages</span>
@@ -457,15 +477,15 @@
       <span class="footer-col-label">Contact</span>
       <div class="footer-contact-list">
         <a href="tel:7062440698">📞 706-244-0698</a>
-        <a href="/cdn-cgi/l/email-protection#58393f313a2b37366a6c6c6e182139303737763b3735">📧 <span class="__cf_email__" data-cfemail="e8898f818a9b8786dadcdcdea89189808787c68b8785">[email&#160;protected]</span></a>
+        <a href="mailto:agibson2446&#64;yahoo.com">📧 agibson2446&#64;yahoo.com</a>
         <a href="https://www.facebook.com/profile.php?id=61576712042698" target="_blank">💬 Facebook</a>
         <a href="about.html">📍 300 Camp Rd, Eastanollee GA</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Byte Buster · Eastanollee, GA 30538 · Stephens County</p>
-    <p>Serving Toccoa · Cornelia · Lavonia · Hartwell · Northeast GA</p>
+    <p>© 2026 Byte Buster · Eastanollee, GA 30538</p>
+    <p>Toccoa · Cornelia · Lavonia · Hartwell · Northeast GA</p>
   </div>
 </footer>
 <script>
