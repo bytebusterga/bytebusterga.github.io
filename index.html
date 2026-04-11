@@ -170,18 +170,20 @@
     .faq-body.open{max-height:200px}
     .faq-ans{padding:0 1.5rem 1.25rem 3.5rem;font-size:0.82rem;color:var(--muted2);line-height:1.8}
 
-    /* CONTACT LAYOUT */
-   .contact-wrap{display:block; width:100%; max-width:900px; margin:0 auto;}
-    .contact-info-title{font-family:var(--display);font-size:2rem;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.75rem}
-    .contact-info-title span{color:var(--accent)}
-    .contact-info-sub{font-size:0.82rem;color:var(--muted2);line-height:1.8;margin-bottom:1.75rem}
-    .contact-detail{display:flex;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border);font-size:0.8rem;color:var(--muted2);align-items:center}
-    .contact-detail:last-child{border-bottom:none}
-    .contact-detail strong{font-size:0.6rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);min-width:70px;flex-shrink:0}
-    .contact-detail a{color:var(--muted2);text-decoration:none;transition:color 0.2s}
-    .contact-detail a:hover{color:var(--accent)}
-    @media(max-width:768px){.contact-wrap{grid-template-columns:1fr}}
+/* CONTACT LAYOUT (CLEAN + PREMIUM CONVERSION VERSION) */
 
+.contact-wrap{display:block; width:100%; max-width:900px; margin:0 auto; text-align:center;}
+.contact-info-title{font-family:var(--display); font-size:2rem; font-weight:900; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:0.75rem;}
+.contact-info-title span{color:var(--accent);}
+.contact-info-sub{font-size:0.82rem; color:var(--muted2); line-height:1.8; margin-bottom:1.25rem;}
+.contact-wrap .premium-trust{font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); font-weight:700; margin-bottom:0.4rem;}
+.contact-wrap .premium-sub{font-size:0.8rem; color:var(--muted2); margin-bottom:1.5rem;}
+#contact .form-shell{width:100%; max-width:700px; margin:0 auto; display:inline-block; text-align:left;}
+#contact .form-shell form{width:100%;}
+.contact-detail{display:none;}
+@media(max-width:768px){.contact-wrap{text-align:center;}
+#contact .form-shell{width:100%; display:block;}
+}
     /* PREMIUM FORM */
     .form-shell{background:var(--surface);border:1px solid var(--border2);overflow:hidden;max-width:680px}
     .form-shell form{display:flex;flex-direction:column}
