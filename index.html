@@ -208,8 +208,8 @@
     @media(max-width:600px){.form-row{grid-template-columns:1fr}.form-bar{flex-direction:column;align-items:flex-start}}
 
     /* SERVICE AREA */
-    .service-area{background:var(--surface);border:1px solid var(--border);overflow:hidden}
-    .service-area{padding:1.5rem 1.25rem; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,0.02);}
+    .service-area{background:var(--surface); border:1px solid var(--border); overflow:hidden; border-radius:8px;}
+    .service-area-wrap{max-width:900px; margin:3rem auto 2rem; padding:0 1rem;}
     .sa-header{background:var(--surface2);border-bottom:1px solid var(--border);padding:0.75rem 1.5rem;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent)}
     .sa-body{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem; align-items:start;}
     .sa-col{padding:1.5rem}
@@ -232,8 +232,8 @@
     .table-section-row td{background:rgba(0,200,240,0.06);color:var(--accent);font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;padding:0.5rem 1.25rem;border-bottom:1px solid var(--border)}
 
         /* FOOTER */
-    footer{background:var(--surface);border-top:2px solid var(--accent);margin-top:0}
-    .footer-main{max-width:1140px;margin:0 auto;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap}
+    footer{background:var(--surface);border-top:2px solid var(--accent);margin-top:2rem}
+    .footer-main{max-width:1100px; margin:0 auto; padding:2rem 1rem; display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:2rem;}
     .footer-brand{font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.35rem}
     .footer-brand span{color:var(--accent)}
     .footer-tagline{font-size:0.72rem;color:var(--muted);line-height:1.6;max-width:220px}
@@ -246,9 +246,7 @@
     .footer-contact-list a:hover{color:var(--accent)}
     .footer-bottom{border-top:1px solid var(--border);max-width:1140px;margin:0 auto;padding:0.6rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
     .footer-bottom p{font-size:0.62rem;color:var(--muted)}
-    .footer-main{max-width:1100px; margin:0 auto;padding:2rem 1rem;}
-    .footer-bottom{margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--border); opacity:0.8;}
-    @media(max-width:700px){.footer-main{flex-direction:column;gap:1.25rem;padding:1.25rem 1.5rem}.footer-bottom{flex-direction:column;text-align:center}}
+       @media(max-width:700px){.footer-main{flex-direction:column;gap:1.25rem;padding:1.25rem 1.5rem}.footer-bottom{flex-direction:column;text-align:center}}
 
     /* SCROLL REVEAL */
     .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.45s ease,transform 0.45s ease}
@@ -501,58 +499,79 @@
 
   </div>
 </section>
-<div class="service-area reveal">
-  <div class="sa-header">// Service Area</div>
-  <div class="sa-body">
-    <div class="sa-col">
-      <div class="sa-col-title">Local Drop-Off</div>
-      <p> Based in <strong>Eastanollee, GA</strong>. Customers visit from <strong>Toccoa, Cornelia, Lavonia, Hartwell</strong> and surrounding Northeast Georgia areas. Drop-off by appointment only.
+<!-- SERVICE AREA -->
+<div class="service-area-wrap">
+  <div class="service-area reveal">
+
+    <div class="sa-header">// Service Area</div>
+
+    <div class="sa-body">
+      <div class="sa-col">
+        <div class="sa-col-title">Local Drop-Off</div>
+        <p>
+          Based in <strong>Eastanollee, GA</strong>. Customers visit from
+          <strong>Toccoa, Cornelia, Lavonia, Hartwell</strong> and surrounding areas.
+          Drop-off by appointment only.
+        </p>
+      </div>
+
+      <div class="sa-col">
+        <div class="sa-col-title">Nationwide Mail-In</div>
+        <p>
+          Ship your device from anywhere in the U.S. Every repair is handled personally
+          and returned securely after service.
+        </p>
+      </div>
+    </div>
+
+    <div class="sa-footer">
+      📍 Northeast Georgia · 📦 Mail-in Repairs Available Nationwide
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    
+    <!-- BRAND -->
+    <div class="footer-col">
+      <div class="footer-brand">Byte<span>Buster</span></div>
+      <p class="footer-tagline">Expert Repair. Honest Pricing. Personal Service.</p>
+      <p class="footer-tagline">
+        Eastanollee, GA · Serving Northeast Georgia & nationwide.
       </p>
     </div>
-    <div style="max-width:900px;margin:0 auto;border-bottom:1px solid var(--border);opacity:0.6;"></div>
-    <div class="sa-col">
-      <div class="sa-col-title">Nationwide Mail-In</div>
-      <p>Ship your device from anywhere in the U.S. Every repair is handled personally and returned securely after service.</p>
+
+    <!-- LINKS -->
+    <div class="footer-col">
+      <span class="footer-col-label">Pages</span>
+      <ul class="footer-nav compact">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pc-repair.html">PC Repair</a></li>
+        <li><a href="console-modding.html">Console Mods</a></li>
+        <li><a href="custom-pc-builds.html">Custom Builds</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
     </div>
-  </div>
-  <div class="sa-footer">
-    📍 Northeast Georgia · 📦 Mail-in Repairs Available Nationwide
-  </div>
-</div>
-  
- <footer>
-  <div class="footer-main footer-grid">
-  <div class="footer-col">
-    <div class="footer-brand">Byte<span>Buster</span></div>
-    <p class="footer-tagline">Expert Repair. Honest Pricing. Personal Service.</p>
-    <p class="footer-tagline">
-      Eastanollee, GA · Serving Northeast Georgia & nationwide.
-    </p>
-  </div>
-  <!-- LINKS -->
-  <div class="footer-col">
-    <span class="footer-col-label">Pages</span>
-    <ul class="footer-nav compact">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="pc-repair.html">PC Repair</a></li>
-      <li><a href="console-modding.html">Console Mods</a></li>
-      <li><a href="custom-pc-builds.html">Custom Builds</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-    </ul>
-  </div>
-  <!-- CONTACT -->
-  <div class="footer-col">
-    <span class="footer-col-label">Contact</span>
-    <div class="footer-contact-list compact">
-      <a href="tel:7062440698">📞 706-244-0698</a>
-      <a href="mailto:agibson2446@yahoo.com">📧 agibson2446@yahoo.com</a>
-      <a href="https://www.facebook.com/bytebusterga" target="_blank">💬 Facebook</a>
-     <a href="https://www.google.com/maps/search/?api=1&query=300+Camp+Rd,+Eastanollee,+GA+30538" target="_blank">
-  📍 300 Camp Rd, Eastanollee, GA · Get Directions</a>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <span class="footer-col-label">Contact</span>
+      <div class="footer-contact-list compact">
+        <a href="tel:7062440698">📞 706-244-0698</a>
+        <a href="mailto:agibson2446@yahoo.com">📧 agibson2446@yahoo.com</a>
+        <a href="https://www.facebook.com/bytebusterga" target="_blank">💬 Facebook</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=300+Camp+Rd,+Eastanollee,+GA+30538" target="_blank">
+          📍 300 Camp Rd, Eastanollee, GA
+        </a>
+      </div>
     </div>
+
   </div>
-</div>
+
   <div class="footer-bottom">
     <p>© 2026 Byte Buster</p>
     <p>Toccoa · Cornelia · Lavonia · Hartwell · Northeast GA</p>
