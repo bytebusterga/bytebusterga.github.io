@@ -6,12 +6,13 @@
   <title>Custom PC Builds | Byte Buster — Eastanollee, GA</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    :root{--bg:#080b12;--surface:#0e1219;--surface2:#131820;--border:#1e2738;--border2:#28354a;--accent:#2b9fd9;--accent-d:#1a7fad;--accent-g:rgba(43,159,217,0.08);--text:#e8ecf4;--muted:#8090a8;--muted2:#bcc8da;--gold:#f0c040;--display:'Barlow Condensed',sans-serif;--body:'Inter',sans-serif}
+    :root{--bg:#080b12;--surface:#0e1219;--surface2:#131820;--border:#1e2738;--border2:#28354a;--accent:#2b9fd9;--accent-d:#1a7fad;--accent-g:rgba(43,159,217,0.08);--text:#e8ecf4;--muted:#8090a8;--muted2:#bcc8da;--gold:#f0c040;--green:#3dd68c;--display:'Barlow Condensed',sans-serif;--body:'Inter',sans-serif}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden;padding-top:60px}
     body::after{content:'';position:fixed;inset:0;z-index:-1;background-color:#080b12;background-image:linear-gradient(rgba(43,159,217,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(43,159,217,0.06) 1px,transparent 1px),linear-gradient(rgba(43,159,217,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(43,159,217,0.03) 1px,transparent 1px);background-size:80px 80px,80px 80px,20px 20px,20px 20px;background-position:-1px -1px,-1px -1px,-1px -1px,-1px -1px}
     body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 50%,rgba(43,159,217,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(43,159,217,0.05) 0%,transparent 50%),radial-gradient(ellipse at 60% 80%,rgba(0,0,0,0.4) 0%,transparent 60%);pointer-events:none}
+
     nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;background:rgba(8,11,18,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
     .nav-inner{max-width:1140px;margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between}
     .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
@@ -34,12 +35,16 @@
     .mob-menu a:hover,.mob-menu a.active{color:var(--accent);background:var(--accent-g);padding-left:2.5rem}
     .mob-menu a:last-child{border-bottom:none}
     @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+
+    /* TRUST BAR */
     .trust-bar{background:var(--surface);border-bottom:1px solid var(--border)}
-    .trust-inner{max-width:1140px;margin:0 auto;padding:0 2rem;display:flex;align-items:stretch;justify-content:space-between}
+    .trust-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;align-items:stretch;justify-content:space-between}
     .trust-item{display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.55rem 0.75rem;flex:1;text-align:center}
     .trust-item span{font-size:0.6rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted2);white-space:nowrap}
     .trust-div{width:1px;background:var(--border);align-self:stretch;flex-shrink:0}
     @media(max-width:900px){.trust-bar{display:none}}
+
+    /* LAYOUT */
     .page-hero{padding:2.5rem 2rem 2rem;max-width:900px;margin:0 auto}
     .hero-tag{display:inline-block;font-size:0.62rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,200,240,0.25);padding:0.3rem 0.85rem;margin-bottom:1.25rem;border-radius:2px}
     .page-hero h1{font-family:var(--display);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:700;line-height:1;text-transform:uppercase;margin-bottom:1.25rem}
@@ -50,35 +55,106 @@
     .section-num{font-family:var(--display);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:var(--accent);flex-shrink:0}
     .section-hd h2{font-family:var(--display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;white-space:nowrap}
     .section-line{flex:1;height:1px;background:var(--border)}
+    .alt-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem}
+    .alt-inner{max-width:900px;margin:0 auto}
+
+    /* BUILD TYPE CARDS */
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
     .card{background:var(--surface);padding:1.75rem;position:relative;overflow:hidden;transition:background 0.25s}
     .card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height 0.35s ease}
     .card:hover{background:var(--surface2)}
     .card:hover::before{height:100%}
-    .card-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
     .card-title{font-family:var(--display);font-size:1.25rem;font-weight:700;margin-bottom:0.6rem;color:var(--text)}
     .card-desc{font-size:0.82rem;color:var(--muted2);line-height:1.75}
     .card-tag{display:inline-block;margin-top:0.85rem;font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,200,240,0.2);padding:0.2rem 0.5rem;border-radius:1px}
     @media(max-width:768px){.cards{grid-template-columns:1fr}}
-    .alt-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem}
-    .alt-inner{max-width:900px;margin:0 auto}
+
+    /* HOW IT WORKS */
+    .steps-list{border:1px solid var(--border);overflow:hidden}
+    .step-row{display:flex;gap:1.5rem;padding:1.5rem;border-bottom:1px solid var(--border);align-items:flex-start}
+    .step-row:last-child{border-bottom:none}
+    .step-n{font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--accent);opacity:0.5;line-height:1;min-width:2.5rem}
+    .step-title{font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:0.35rem}
+    .step-desc{font-size:0.8rem;color:var(--muted2);line-height:1.75}
+
+    /* ── PRICING SECTION ── */
+    .pricing-note{display:flex;gap:0.75rem;padding:0.9rem 1.25rem;background:rgba(240,192,64,0.06);border:1px solid rgba(240,192,64,0.2);font-size:0.78rem;color:#d0bfa0;line-height:1.7;margin-bottom:2rem;align-items:flex-start}
+    .pricing-note strong{color:var(--gold)}
+    .price-label{font-family:var(--display);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem}
+    .price-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+    /* TIER CARDS */
+    .tier-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem}
+    .tier{background:var(--surface);padding:1.75rem 1.5rem;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background 0.25s}
+    .tier::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border2);transition:background 0.3s}
+    .tier:hover{background:var(--surface2)}
+    .tier:hover::before{background:var(--accent)}
+    .tier.featured{background:#0d1520}
+    .tier.featured::before{background:var(--accent)}
+    .tier-badge{font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#080b12;background:var(--accent);padding:0.2rem 0.55rem;border-radius:1px;width:fit-content;margin-bottom:0.85rem}
+    .tier-badge.hide{visibility:hidden}
+    .tier-level{font-family:var(--display);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem}
+    .tier-name{font-family:var(--display);font-size:1.5rem;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;color:var(--text);line-height:1;margin-bottom:0.5rem}
+    .tier.featured .tier-name{color:var(--accent)}
+    .tier-labor{font-family:var(--display);font-size:2rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.2rem}
+    .tier.featured .tier-labor{color:var(--accent)}
+    .tier-labor span{font-size:0.9rem;font-weight:400;color:var(--muted)}
+    .tier-note{font-size:0.68rem;color:var(--muted);margin-bottom:1rem;line-height:1.5}
+    .tier-range{display:inline-flex;gap:0.4rem;align-items:center;font-size:0.68rem;color:var(--muted2);background:rgba(43,159,217,0.07);border:1px solid rgba(43,159,217,0.18);padding:0.25rem 0.65rem;margin-bottom:1rem}
+    .tier-range strong{color:var(--accent);font-family:var(--display);font-size:0.82rem;font-weight:700}
+    .tier-desc{font-size:0.78rem;color:var(--muted2);line-height:1.7;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+    .tier-includes{font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:0.65rem}
+    .tier-list{list-style:none;display:flex;flex-direction:column;gap:0.4rem;flex:1;margin-bottom:1.25rem}
+    .tier-list li{font-size:0.77rem;color:var(--muted2);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.5}
+    .tier-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;font-size:0.8rem}
+    .tier-cta{display:block;text-align:center;font-family:var(--display);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.7rem 1rem;background:var(--border2);color:var(--muted2);transition:all 0.2s;margin-top:auto;border:1px solid transparent}
+    .tier-cta:hover{background:var(--accent);color:#080b12;border-color:var(--accent)}
+    .tier.featured .tier-cta{background:var(--accent);color:#080b12}
+    .tier.featured .tier-cta:hover{background:#44c8f5}
+    @media(max-width:600px){.tier-grid{grid-template-columns:1fr}}
+
+    /* LABOR CALLOUT */
+    .labor-callout{background:var(--surface);border:1px solid var(--border2);border-left:4px solid var(--accent);padding:1.5rem 1.75rem;margin-bottom:2rem;font-size:0.82rem;color:var(--muted2);line-height:1.85}
+    .labor-callout strong{color:var(--accent)}
+    .labor-callout .lc-title{font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:0.5rem}
+
+    /* COMPLEXITY TABLE */
+    .comp-table{width:100%;border-collapse:collapse;border:1px solid var(--border);font-size:0.78rem;margin-bottom:2rem}
+    .comp-table th{background:rgba(43,159,217,0.1);font-family:var(--display);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);padding:0.7rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+    .comp-table th:not(:first-child){border-left:1px solid var(--border)}
+    .comp-table td{padding:0.7rem 1rem;color:var(--muted2);border-bottom:1px solid var(--border);background:var(--surface)}
+    .comp-table td:not(:first-child){border-left:1px solid var(--border)}
+    .comp-table tr:last-child td{border-bottom:none}
+    .comp-table tr:hover td{background:var(--surface2)}
+    .comp-table .amt{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--text);white-space:nowrap}
+
+    /* ADD-ONS */
+    .addons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem}
+    .addon{background:var(--surface);padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s}
+    .addon:hover{background:var(--surface2)}
+    .addon-name{font-size:0.8rem;color:var(--muted2);flex:1}
+    .addon-price{font-family:var(--display);font-size:0.95rem;font-weight:700;color:var(--accent);margin-left:1rem;white-space:nowrap}
+
+    /* EXAMPLE QUOTES */
+    .quote-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:1.5rem}
+    .quote-card{background:var(--surface2);border:1px solid var(--border);padding:1.5rem}
+    .quote-label{font-family:var(--display);font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem}
+    .quote-row{display:flex;justify-content:space-between;font-size:0.8rem;padding:0.45rem 0;border-bottom:1px solid var(--border);gap:1rem}
+    .quote-row .ql{color:var(--muted)}
+    .quote-row .qv{font-family:var(--display);font-size:0.85rem;font-weight:700;color:var(--text);white-space:nowrap}
+    .quote-total{border-bottom:none;border-top:1px solid rgba(43,159,217,0.3);padding-top:0.5rem;margin-top:0.25rem}
+    .quote-total .ql{color:var(--accent);font-weight:600}
+    .quote-total .qv{color:var(--accent);font-size:1rem}
+    .quote-note{font-size:0.68rem;color:var(--muted);margin-top:0.5rem;line-height:1.5;font-style:italic}
+
+    /* POLICY NOTE */
+    .policy-note{background:rgba(240,90,90,0.05);border:1px solid rgba(240,90,90,0.18);border-left:3px solid #f05a5a;padding:1.25rem 1.5rem;font-size:0.8rem;color:var(--muted2);line-height:1.8;margin-bottom:2rem}
+    .policy-note strong{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#f05a5a;display:block;margin-bottom:0.4rem}
+
+    /* FORM */
     .btn{display:inline-block;font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.85rem 2rem;cursor:pointer;border:none;transition:all 0.2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
     .btn-primary{background:var(--accent);color:#080b12;box-shadow:0 0 24px rgba(0,200,240,0.2)}
     .btn-primary:hover{background:#33d8ff;transform:translateY(-2px)}
-    .btn-secondary{background:transparent;color:var(--muted2);border:1px solid var(--border2)}
-    .btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-    .faq-list{border:1px solid var(--border);overflow:hidden}
-    .faq-item{border-bottom:1px solid var(--border)}
-    .faq-item:last-child{border-bottom:none}
-    .faq-btn{width:100%;background:none;border:none;cursor:pointer;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;text-align:left;color:var(--text);transition:background 0.2s}
-    .faq-btn:hover,.faq-btn[aria-expanded="true"]{background:var(--accent-g)}
-    .faq-q{font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;flex:1}
-    .faq-lbl{font-size:0.62rem;font-weight:600;letter-spacing:0.15em;color:var(--accent);flex-shrink:0}
-    .faq-chevron{color:var(--muted);font-size:0.85rem;transition:transform 0.25s;flex-shrink:0}
-    .faq-btn[aria-expanded="true"] .faq-chevron{transform:rotate(180deg);color:var(--accent)}
-    .faq-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
-    .faq-body.open{max-height:200px}
-    .faq-ans{padding:0 1.5rem 1.25rem 3.5rem;font-size:0.82rem;color:var(--muted2);line-height:1.8}
     .form-shell{background:var(--surface);border:1px solid var(--border2);overflow:hidden;max-width:680px}
     .form-shell form{display:flex;flex-direction:column}
     .form-row{display:grid;grid-template-columns:1fr 1fr}
@@ -100,6 +176,8 @@
     .backup-link{font-size:0.75rem;color:var(--muted2);text-decoration:none;padding:0.3rem 0.75rem;border:1px solid var(--border);transition:color 0.2s,border-color 0.2s;border-radius:2px}
     .backup-link:hover{color:var(--accent);border-color:var(--accent)}
     @media(max-width:600px){.form-row{grid-template-columns:1fr}.form-bar{flex-direction:column;align-items:flex-start}}
+
+    /* SERVICE AREA */
     .service-area{background:var(--surface);border:1px solid var(--border);overflow:hidden}
     .sa-header{background:var(--surface2);border-bottom:1px solid var(--border);padding:0.75rem 1.5rem;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent)}
     .sa-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
@@ -110,21 +188,10 @@
     .sa-col p strong{color:var(--text)}
     .sa-footer{border-top:1px solid var(--border);padding:0.75rem 1.5rem;font-size:0.72rem;color:var(--muted);text-align:center}
     @media(max-width:600px){.sa-body{grid-template-columns:1fr}.sa-col:first-child{border-right:none;border-bottom:1px solid var(--border)}}
-    .policy-block{border:1px solid var(--border);background:var(--surface);padding:1.75rem;margin-bottom:1.25rem;border-left:3px solid var(--accent)}
-    .policy-block p{font-size:0.82rem;color:var(--muted2);line-height:1.9}
-    .policy-block p strong{color:var(--text)}
-    .policy-list{border:1px solid var(--border);overflow:hidden;margin-bottom:2rem}
-    .policy-item{display:flex;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border);font-size:0.8rem;color:var(--muted2);line-height:1.7;align-items:flex-start}
-    .policy-item:last-child{border-bottom:none}
-    .policy-item::before{content:'→';color:var(--accent);flex-shrink:0}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    @media(max-width:768px){.page-hero{padding:3rem 1.5rem 2rem}.section{padding:3rem 1.5rem}.alt-section{padding:3rem 1.5rem}.section-hd h2{font-size:1.6rem}.cards{grid-template-columns:1fr}}
 
     /* FOOTER */
     footer{background:var(--surface);border-top:2px solid var(--accent);margin-top:2rem}
     .footer-main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;align-items:start}
-    .footer-col{}
     .footer-brand{font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.5rem}
     .footer-brand span{color:var(--accent)}
     .footer-tagline{font-size:0.73rem;color:var(--muted);line-height:1.7}
@@ -138,10 +205,15 @@
     .footer-bottom{border-top:1px solid var(--border);max-width:1100px;margin:0 auto;padding:0.75rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
     .footer-bottom p{font-size:0.62rem;color:var(--muted)}
     @media(max-width:700px){.footer-main{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem}.footer-bottom{flex-direction:column;text-align:center;padding:0.75rem 1.5rem}}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:768px){.page-hero{padding:3rem 1.5rem 2rem}.section{padding:3rem 1.5rem}.alt-section{padding:3rem 1.5rem}}
   </style>
   <meta name="description" content="Custom PC builds in Eastanollee, GA. Gaming rigs, streaming setups, office workstations built to your budget."/>
 </head>
 <body>
+
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Byte Buster"/><span>Byte Buster</span></a>
@@ -168,13 +240,16 @@
   <a href="about.html">About</a>
   <a href="policy.html">Policy</a>
 </div>
+
+<!-- HERO -->
 <div class="page-hero">
   <div class="hero-tag">// Custom PC Builds — Eastanollee, GA</div>
   <h1>Built For You.<em>Built To Last.</em></h1>
   <p>Custom PC builds for customers in Eastanollee, Toccoa, Cornelia, Lavonia, and all of Northeast Georgia. Every rig is hand-assembled and personally tested by me — local pickup or shipped nationwide.</p>
-  <a href="#contact" class="btn btn-primary">Start Your Build &#8594;</a>
+  <a href="#pricing" class="btn btn-primary">See Build Pricing &#8594;</a>
 </div>
 
+<!-- 01 BUILD TYPES -->
 <section class="section">
   <div class="section-hd reveal"><span class="section-num">01</span><h2>Popular Build Types</h2><div class="section-line"></div></div>
   <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)" class="reveal">
@@ -187,26 +262,197 @@
   </div>
 </section>
 
+<!-- 02 HOW IT WORKS -->
 <div class="alt-section">
   <div class="alt-inner">
     <div class="section-hd reveal"><span class="section-num">02</span><h2>How It Works</h2><div class="section-line"></div></div>
-    <div style="border:1px solid var(--border);overflow:hidden" class="reveal">
-      <div style="display:flex;gap:1.5rem;padding:1.5rem;border-bottom:1px solid var(--border);align-items:flex-start"><div style="font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--accent);opacity:0.5;line-height:1;min-width:2.5rem">01</div><div><div style="font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:0.35rem">Tell Me Your Needs</div><p style="font-size:0.8rem;color:var(--muted2);line-height:1.75">Share your budget and what you'll use it for. Message me on Facebook or fill out the form below.</p></div></div>
-      <div style="display:flex;gap:1.5rem;padding:1.5rem;border-bottom:1px solid var(--border);align-items:flex-start"><div style="font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--accent);opacity:0.5;line-height:1;min-width:2.5rem">02</div><div><div style="font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:0.35rem">Get a Parts List &amp; Quote</div><p style="font-size:0.8rem;color:var(--muted2);line-height:1.75">I put together a tailored parts list and send you a quote. No commitment until you approve it.</p></div></div>
-      <div style="display:flex;gap:1.5rem;padding:1.5rem;border-bottom:1px solid var(--border);align-items:flex-start"><div style="font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--accent);opacity:0.5;line-height:1;min-width:2.5rem">03</div><div><div style="font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:0.35rem">Deposit &amp; Parts Order</div><p style="font-size:0.8rem;color:var(--muted2);line-height:1.75">Once approved, a non-refundable deposit covers parts cost. Parts are ordered immediately.</p></div></div>
-      <div style="display:flex;gap:1.5rem;padding:1.5rem;border-bottom:1px solid var(--border);align-items:flex-start"><div style="font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--accent);opacity:0.5;line-height:1;min-width:2.5rem">04</div><div><div style="font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:0.35rem">Assembly &amp; Testing</div><p style="font-size:0.8rem;color:var(--muted2);line-height:1.75">I build and stress-test your system — benchmarks, temps, and stability runs before it ships.</p></div></div>
-      <div style="display:flex;gap:1.5rem;padding:1.5rem;align-items:flex-start"><div style="font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--accent);opacity:0.5;line-height:1;min-width:2.5rem">05</div><div><div style="font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:0.35rem">Pickup or Delivery</div><p style="font-size:0.8rem;color:var(--muted2);line-height:1.75">Local pickup in Eastanollee or shipped nationwide. Remaining balance due before shipping.</p></div></div>
+    <div class="steps-list reveal">
+      <div class="step-row"><div class="step-n">01</div><div><div class="step-title">Tell Me Your Needs</div><p class="step-desc">Share your budget and what you'll use it for. Message me on Facebook or fill out the form below.</p></div></div>
+      <div class="step-row"><div class="step-n">02</div><div><div class="step-title">Get a Parts List &amp; Quote</div><p class="step-desc">I put together a tailored parts list and send you a quote. No commitment until you approve it.</p></div></div>
+      <div class="step-row"><div class="step-n">03</div><div><div class="step-title">Parts Invoice Paid First</div><p class="step-desc">Once you approve the quote, parts cost is invoiced and paid upfront via PayPal before I order anything. No parts are ordered without payment — this protects both of us.</p></div></div>
+      <div class="step-row"><div class="step-n">04</div><div><div class="step-title">Assembly &amp; Testing</div><p class="step-desc">I build and stress-test your system — benchmarks, temps, and stability runs. Labor is invoiced separately once the build is complete and verified.</p></div></div>
+      <div class="step-row"><div class="step-n">05</div><div><div class="step-title">Pickup or Delivery</div><p class="step-desc">Local pickup in Eastanollee or shipped nationwide. Remaining labor balance confirmed before shipping.</p></div></div>
     </div>
   </div>
 </div>
 
+<!-- 03 PRICING -->
+<section class="section" id="pricing">
+  <div class="section-hd reveal"><span class="section-num">03</span><h2>Build Pricing</h2><div class="section-line"></div></div>
+
+  <div class="pricing-note reveal">
+    <span>⚠️</span>
+    <div><strong>Parts are always separate and paid upfront.</strong> Labor fees below cover assembly, cable management, OS install, and testing only. Parts cost is quoted and invoiced first — no parts are ordered without payment. All prices are estimates; a final quote is confirmed before any work begins.</div>
+  </div>
+
+  <!-- Labor callout -->
+  <div class="labor-callout reveal">
+    <div class="lc-title">How Labor Is Priced</div>
+    I charge a labor range, not a flat fee — because no two builds are exactly the same. Unexpected issues, extra cable management, troubleshooting compatibility problems, or complex cooling setups all add time. The ranges below are honest estimates based on typical builds. I'll always confirm the final labor charge before shipping or pickup. <strong>You are never billed more than what was agreed to.</strong>
+  </div>
+
+  <div class="price-label reveal">Labor Tiers — By Build Complexity</div>
+
+  <div class="tier-grid reveal">
+    <!-- TIER 1 -->
+    <div class="tier">
+      <div class="tier-badge hide">_</div>
+      <div class="tier-level">Tier 1 — Entry Level</div>
+      <div class="tier-name">Basic Build</div>
+      <div class="tier-labor">$100<span>–$150</span></div>
+      <div class="tier-note">Labor only · parts quoted &amp; invoiced separately</div>
+      <div class="tier-range">Typical parts budget: <strong>$300–$600</strong></div>
+      <p class="tier-desc">Straightforward budget or office build. Minimal components, simple cable management, standard cooling.</p>
+      <div class="tier-includes">What's Included</div>
+      <ul class="tier-list">
+        <li>Full component assembly</li>
+        <li>Basic cable management</li>
+        <li>BIOS configuration</li>
+        <li>Windows install &amp; drivers</li>
+        <li>Stability &amp; boot test</li>
+      </ul>
+      <a href="#contact" class="tier-cta">Get a Quote →</a>
+    </div>
+
+    <!-- TIER 2 — FEATURED -->
+    <div class="tier featured">
+      <div class="tier-badge">⭐ Most Requested</div>
+      <div class="tier-level">Tier 2 — Mid Range</div>
+      <div class="tier-name">Gamer Build</div>
+      <div class="tier-labor">$150<span>–$225</span></div>
+      <div class="tier-note">Labor only · parts quoted &amp; invoiced separately</div>
+      <div class="tier-range">Typical parts budget: <strong>$600–$1,200</strong></div>
+      <p class="tier-desc">The sweet spot for most gaming builds. More components, better cable routing, aftermarket cooling, RGB setup if requested.</p>
+      <div class="tier-includes">Everything in Basic, plus:</div>
+      <ul class="tier-list">
+        <li>Aftermarket cooler install &amp; thermal paste</li>
+        <li>Clean cable routing &amp; tie management</li>
+        <li>RGB configuration (if applicable)</li>
+        <li>Benchmark &amp; temp stress testing</li>
+        <li>Game-ready driver setup</li>
+      </ul>
+      <a href="#contact" class="tier-cta">Start This Build →</a>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="tier">
+      <div class="tier-badge hide">_</div>
+      <div class="tier-level">Tier 3 — High End</div>
+      <div class="tier-name">Performance Build</div>
+      <div class="tier-labor">$225<span>–$325</span></div>
+      <div class="tier-note">Labor only · parts quoted &amp; invoiced separately</div>
+      <div class="tier-range">Typical parts budget: <strong>$1,200–$2,000+</strong></div>
+      <p class="tier-desc">High-component-count builds — full ATX, multiple drives, custom airflow, high-end GPU installation, and extensive testing.</p>
+      <div class="tier-includes">Everything in Gamer Build, plus:</div>
+      <ul class="tier-list">
+        <li>Full ATX / large case management</li>
+        <li>Multi-drive configuration &amp; RAID setup</li>
+        <li>Extended stress test &amp; burn-in</li>
+        <li>Airflow optimization</li>
+        <li>Complete documentation of build spec</li>
+      </ul>
+      <a href="#contact" class="tier-cta">Get a Quote →</a>
+    </div>
+
+    <!-- TIER 4 -->
+    <div class="tier">
+      <div class="tier-badge hide">_</div>
+      <div class="tier-level">Tier 4 — Custom / Specialty</div>
+      <div class="tier-name">Showcase Build</div>
+      <div class="tier-labor">$300<span>–$450+</span></div>
+      <div class="tier-note">Labor only · parts quoted &amp; invoiced separately</div>
+      <div class="tier-range">Typical parts budget: <strong>$1,500–$3,500+</strong></div>
+      <p class="tier-desc">Custom water cooling, maximum RGB, content creator rigs with NVMe RAID, or any build requiring extra time and precision.</p>
+      <div class="tier-includes">Everything in Performance Build, plus:</div>
+      <ul class="tier-list">
+        <li>Custom loop / AIO water cooling</li>
+        <li>Full showcase cable sleeving or routing</li>
+        <li>Creator / workstation OS configuration</li>
+        <li>Extended burn-in &amp; multi-day stability test</li>
+        <li>Priority handling</li>
+      </ul>
+      <a href="#contact" class="tier-cta">Get a Quote →</a>
+    </div>
+  </div>
+
+  <!-- Complexity breakdown -->
+  <div class="price-label reveal">What Affects Labor Cost</div>
+  <div style="overflow-x:auto" class="reveal">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Adds Time?</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Large/full tower case vs. micro-ATX</td><td style="color:var(--gold)">Yes</td><td class="amt">+$25–$50</td></tr>
+        <tr><td>Custom water cooling loop</td><td style="color:var(--gold)">Yes</td><td class="amt">+$50–$100</td></tr>
+        <tr><td>3+ storage drives to configure</td><td style="color:var(--gold)">Yes</td><td class="amt">+$20–$40</td></tr>
+        <tr><td>RGB sync setup across multiple components</td><td style="color:var(--gold)">Yes</td><td class="amt">+$15–$30</td></tr>
+        <tr><td>Compatibility issues discovered during build</td><td style="color:var(--gold)">Yes</td><td class="amt">Quoted before continuing</td></tr>
+        <tr><td>Standard ATX mid-tower, single GPU, 1–2 drives</td><td style="color:var(--green)">No</td><td class="amt">Base tier rate applies</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add-ons -->
+  <div class="price-label reveal">Optional Add-Ons</div>
+  <div class="addons-grid reveal">
+    <div class="addon"><span class="addon-name">OS Install &amp; Driver Setup</span><span class="addon-price">$40</span></div>
+    <div class="addon"><span class="addon-name">Windows License (if needed)</span><span class="addon-price">At cost</span></div>
+    <div class="addon"><span class="addon-name">BIOS / XMP / OC Profile</span><span class="addon-price">+$20</span></div>
+    <div class="addon"><span class="addon-name">Game installs (per title)</span><span class="addon-price">+$10</span></div>
+    <div class="addon"><span class="addon-name">Software suite setup</span><span class="addon-price">+$20–$40</span></div>
+    <div class="addon"><span class="addon-name">Shipping materials &amp; boxing</span><span class="addon-price">At cost</span></div>
+  </div>
+
+  <!-- Example quotes -->
+  <div class="price-label reveal">Example Build Quotes</div>
+  <div class="quote-grid reveal">
+    <div class="quote-card">
+      <div class="quote-label" style="color:var(--green)">Budget Office PC</div>
+      <div class="quote-row"><span class="ql">Parts (Ryzen 5, 16GB, SSD)</span><span class="qv">~$380</span></div>
+      <div class="quote-row"><span class="ql">Labor — Basic Tier</span><span class="qv">$100</span></div>
+      <div class="quote-row"><span class="ql">OS Install add-on</span><span class="qv">$40</span></div>
+      <div class="quote-row quote-total"><span class="ql">Est. Total</span><span class="qv">~$520</span></div>
+      <div class="quote-note">Parts invoiced first. Labor billed on completion.</div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-label" style="color:var(--accent)">1440p Gaming Build</div>
+      <div class="quote-row"><span class="ql">Parts (i5/R7, RTX 4070, 32GB)</span><span class="qv">~$950</span></div>
+      <div class="quote-row"><span class="ql">Labor — Gamer Tier</span><span class="qv">$175</span></div>
+      <div class="quote-row"><span class="ql">OS Install add-on</span><span class="qv">$40</span></div>
+      <div class="quote-row quote-total"><span class="ql">Est. Total</span><span class="qv">~$1,165</span></div>
+      <div class="quote-note">Parts invoiced first. Labor billed on completion.</div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-label" style="color:var(--gold)">Streaming / Content Rig</div>
+      <div class="quote-row"><span class="ql">Parts (R9/i9, RTX 4080, 64GB)</span><span class="qv">~$1,800</span></div>
+      <div class="quote-row"><span class="ql">Labor — Performance Tier</span><span class="qv">$275</span></div>
+      <div class="quote-row"><span class="ql">OS + software setup</span><span class="qv">$60</span></div>
+      <div class="quote-row quote-total"><span class="ql">Est. Total</span><span class="qv">~$2,135</span></div>
+      <div class="quote-note">Parts invoiced first. Labor billed on completion.</div>
+    </div>
+  </div>
+
+  <!-- Policy note -->
+  <div class="policy-note reveal">
+    <strong>⚠ Payment Policy</strong>
+    Parts cost must be paid in full via PayPal invoice before any parts are ordered. This is non-negotiable — no exceptions. Labor is invoiced separately once the build is complete and tested. All prices shown are estimates; your final confirmed quote is what you pay. If unexpected issues arise during the build that add significant time, I will contact you before proceeding.
+  </div>
+
+</section>
+
+<!-- 04 CONTACT -->
 <section class="section" id="contact">
-  <div class="section-hd reveal"><span class="section-num">03</span><h2>Start Your Build</h2><div class="section-line"></div></div>
+  <div class="section-hd reveal"><span class="section-num">04</span><h2>Start Your Build</h2><div class="section-line"></div></div>
   <div style="margin-bottom:1.5rem" class="reveal">
     <div style="font-family:var(--display);font-size:1.6rem;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.5rem">Request a Custom Build</div>
     <p style="font-size:0.82rem;color:var(--muted2);line-height:1.8;max-width:560px">Tell me your budget and what you need the PC for. I'll put together a parts list and quote personally — no middleman, no markup games.</p>
   </div>
-  <div class="form-shell">
+  <div class="form-shell reveal">
     <form action="https://formsubmit.co/agibson2446@yahoo.com" method="POST">
       <input type="hidden" name="_subject" value="Custom PC Build Request - Byte Buster"/>
       <input type="hidden" name="_captcha" value="false"/>
@@ -220,7 +466,13 @@
         <div class="form-field"><label for="fd">Build Type</label>
           <select id="fd" name="device">
             <option value="">Select...</option>
-            <option>Budget Gaming PC</option><option>Mid-Range Gaming PC</option><option>High-End Gaming PC</option><option>Streaming / Content Creation</option><option>RGB Showcase Build</option><option>Office / Workstation</option><option>Not Sure — Need Advice</option>
+            <option>Budget Gaming PC (Tier 1)</option>
+            <option>Mid-Range Gaming PC (Tier 2)</option>
+            <option>High-End Gaming PC (Tier 3)</option>
+            <option>Streaming / Content Creation (Tier 3–4)</option>
+            <option>RGB Showcase Build (Tier 2–4)</option>
+            <option>Office / Workstation (Tier 1–2)</option>
+            <option>Not Sure — Need Advice</option>
           </select>
         </div>
       </div>
@@ -240,6 +492,7 @@
     </div>
   </div>
 </section>
+
 <div class="service-area reveal" style="max-width:900px;margin:2rem auto 0">
   <div class="sa-header">// Service Area</div>
   <div class="sa-body">
@@ -248,6 +501,7 @@
   </div>
   <div class="sa-footer">&#128205; 300 Camp Rd, Eastanollee, GA 30538 &nbsp;&bull;&nbsp; &#128222; 706-244-0698 &nbsp;&bull;&nbsp; Stephens County, GA</div>
 </div>
+
 <footer>
   <div class="footer-main">
     <div class="footer-col">
@@ -281,6 +535,7 @@
     <p>Toccoa &middot; Cornelia &middot; Lavonia &middot; Hartwell &middot; Northeast GA</p>
   </div>
 </footer>
+
 <script>
 var hbg=document.getElementById("hbg"),mob=document.getElementById("mob");
 if(hbg&&mob){hbg.addEventListener("click",function(){hbg.classList.toggle("open");mob.classList.toggle("open")});mob.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){hbg.classList.remove("open");mob.classList.remove("open")})})}

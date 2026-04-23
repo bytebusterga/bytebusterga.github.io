@@ -1,324 +1,1106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Console Modding | Byte Buster — Eastanollee, GA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#080b12;--surface:#0e1219;--surface2:#131820;--border:#1e2738;--border2:#28354a;--accent:#2b9fd9;--accent-d:#1a7fad;--accent-g:rgba(43,159,217,0.08);--text:#e8ecf4;--muted:#8090a8;--muted2:#bcc8da;--gold:#f0c040;--display:'Barlow Condensed',sans-serif;--body:'Inter',sans-serif}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden;padding-top:60px}
-    body::after{content:'';position:fixed;inset:0;z-index:-1;background-color:#080b12;background-image:linear-gradient(rgba(43,159,217,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(43,159,217,0.06) 1px,transparent 1px),linear-gradient(rgba(43,159,217,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(43,159,217,0.03) 1px,transparent 1px);background-size:80px 80px,80px 80px,20px 20px,20px 20px;background-position:-1px -1px,-1px -1px,-1px -1px,-1px -1px}
-    body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 50%,rgba(43,159,217,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(43,159,217,0.05) 0%,transparent 50%),radial-gradient(ellipse at 60% 80%,rgba(0,0,0,0.4) 0%,transparent 60%);pointer-events:none}
-    nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;background:rgba(8,11,18,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .nav-inner{max-width:1140px;margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-    .nav-logo img{height:32px;width:auto;object-fit:contain}
-    .nav-logo span{font-family:var(--display);font-size:1.15rem;font-weight:700;letter-spacing:0.04em;color:var(--text);text-transform:uppercase}
-    .nav-links{display:flex;align-items:center;gap:0;height:60px}
-    .nav-links a{font-size:0.8rem;font-weight:500;color:var(--muted);text-decoration:none;padding:0 0.85rem;height:60px;line-height:60px;display:inline-block;position:relative;transition:color 0.2s;white-space:nowrap}
-    .nav-links a::after{content:'';position:absolute;bottom:0;left:0.9rem;right:0.9rem;height:2px;background:var(--accent);transform:scaleX(0);transition:transform 0.25s ease}
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
-    .nav-links a.active{color:var(--accent)}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:1px solid var(--border);border-radius:3px}
-    .hamburger span{display:block;width:20px;height:2px;background:var(--muted2);transition:all 0.3s}
-    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .mob-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(8,11,18,0.99);border-bottom:1px solid var(--border);flex-direction:column;z-index:999}
-    .mob-menu.open{display:flex}
-    .mob-menu a{font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);text-decoration:none;padding:1rem 2rem;border-bottom:1px solid var(--border);transition:color 0.2s,background 0.2s,padding-left 0.2s}
-    .mob-menu a:hover,.mob-menu a.active{color:var(--accent);background:var(--accent-g);padding-left:2.5rem}
-    .mob-menu a:last-child{border-bottom:none}
-    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
-    .trust-bar{background:var(--surface);border-bottom:1px solid var(--border)}
-    .trust-inner{max-width:1140px;margin:0 auto;padding:0 2rem;display:flex;align-items:stretch;justify-content:space-between}
-    .trust-item{display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.55rem 0.75rem;flex:1;text-align:center}
-    .trust-item span{font-size:0.6rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted2);white-space:nowrap}
-    .trust-div{width:1px;background:var(--border);align-self:stretch;flex-shrink:0}
-    @media(max-width:900px){.trust-bar{display:none}}
-    .page-hero{padding:2.5rem 2rem 2rem;max-width:900px;margin:0 auto}
-    .hero-tag{display:inline-block;font-size:0.62rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,200,240,0.25);padding:0.3rem 0.85rem;margin-bottom:1.25rem;border-radius:2px}
-    .page-hero h1{font-family:var(--display);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:700;line-height:1;text-transform:uppercase;margin-bottom:1.25rem}
-    .page-hero h1 em{font-style:normal;color:var(--accent);display:block}
-    .page-hero p{font-size:0.9rem;color:var(--muted2);line-height:1.8;max-width:560px;margin-bottom:2rem}
-    .section{padding:2rem 2rem;max-width:900px;margin:0 auto}
-    .section-hd{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
-    .section-num{font-family:var(--display);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:var(--accent);flex-shrink:0}
-    .section-hd h2{font-family:var(--display);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;white-space:nowrap}
-    .section-line{flex:1;height:1px;background:var(--border)}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-    .card{background:var(--surface);padding:1.75rem;position:relative;overflow:hidden;transition:background 0.25s}
-    .card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height 0.35s ease}
-    .card:hover{background:var(--surface2)}
-    .card:hover::before{height:100%}
-    .card-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
-    .card-title{font-family:var(--display);font-size:1.25rem;font-weight:700;margin-bottom:0.6rem;color:var(--text)}
-    .card-desc{font-size:0.82rem;color:var(--muted2);line-height:1.75}
-    .card-tag{display:inline-block;margin-top:0.85rem;font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,200,240,0.2);padding:0.2rem 0.5rem;border-radius:1px}
-    @media(max-width:768px){.cards{grid-template-columns:1fr}}
-    .alt-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem}
-    .alt-inner{max-width:900px;margin:0 auto}
-    .btn{display:inline-block;font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.85rem 2rem;cursor:pointer;border:none;transition:all 0.2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
-    .btn-primary{background:var(--accent);color:#080b12;box-shadow:0 0 24px rgba(0,200,240,0.2)}
-    .btn-primary:hover{background:#33d8ff;transform:translateY(-2px)}
-    .btn-secondary{background:transparent;color:var(--muted2);border:1px solid var(--border2)}
-    .btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-    .faq-list{border:1px solid var(--border);overflow:hidden}
-    .faq-item{border-bottom:1px solid var(--border)}
-    .faq-item:last-child{border-bottom:none}
-    .faq-btn{width:100%;background:none;border:none;cursor:pointer;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;text-align:left;color:var(--text);transition:background 0.2s}
-    .faq-btn:hover,.faq-btn[aria-expanded="true"]{background:var(--accent-g)}
-    .faq-q{font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;flex:1}
-    .faq-lbl{font-size:0.62rem;font-weight:600;letter-spacing:0.15em;color:var(--accent);flex-shrink:0}
-    .faq-chevron{color:var(--muted);font-size:0.85rem;transition:transform 0.25s;flex-shrink:0}
-    .faq-btn[aria-expanded="true"] .faq-chevron{transform:rotate(180deg);color:var(--accent)}
-    .faq-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
-    .faq-body.open{max-height:200px}
-    .faq-ans{padding:0 1.5rem 1.25rem 3.5rem;font-size:0.82rem;color:var(--muted2);line-height:1.8}
-    .form-shell{background:var(--surface);border:1px solid var(--border2);overflow:hidden;max-width:680px}
-    .form-shell form{display:flex;flex-direction:column}
-    .form-row{display:grid;grid-template-columns:1fr 1fr}
-    .form-field{display:flex;flex-direction:column;border-bottom:1px solid var(--border);border-right:1px solid var(--border);position:relative;transition:background 0.2s}
-    .form-field.full{grid-column:1/-1;border-right:none}
-    .form-field:focus-within{background:var(--accent-g)}
-    .form-field:focus-within::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent)}
-    .form-field label{font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);padding:0.6rem 1rem 0.1rem}
-    .form-field input,.form-field select,.form-field textarea{background:transparent;border:none;outline:none;font-family:var(--body);font-size:0.82rem;color:var(--text);padding:0.1rem 1rem 0.6rem;width:100%}
-    .form-field select option{background:var(--surface)}
-    .form-field textarea{min-height:90px;resize:none}
-    .form-bar{display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1rem;background:var(--surface2);border-top:1px solid var(--border);gap:0.75rem;flex-wrap:wrap}
-    .form-bar p{font-size:0.68rem;color:var(--muted);line-height:1.4}
-    .form-bar p strong{color:var(--accent)}
-    .form-bar button{background:var(--accent);color:#080b12;border:none;font-family:var(--display);font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.65rem 1.25rem;cursor:pointer;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));transition:background 0.2s,transform 0.15s;white-space:nowrap}
-    .form-bar button:hover{background:#33d8ff;transform:translateY(-2px)}
-    .form-backup{margin-top:0.6rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
-    .form-backup-lbl{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-    .backup-link{font-size:0.75rem;color:var(--muted2);text-decoration:none;padding:0.3rem 0.75rem;border:1px solid var(--border);transition:color 0.2s,border-color 0.2s;border-radius:2px}
-    .backup-link:hover{color:var(--accent);border-color:var(--accent)}
-    @media(max-width:600px){.form-row{grid-template-columns:1fr}.form-bar{flex-direction:column;align-items:flex-start}}
-    .service-area{background:var(--surface);border:1px solid var(--border);overflow:hidden}
-    .sa-header{background:var(--surface2);border-bottom:1px solid var(--border);padding:0.75rem 1.5rem;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent)}
-    .sa-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
-    .sa-col{padding:1.5rem}
-    .sa-col:first-child{border-right:1px solid var(--border)}
-    .sa-col-title{font-family:var(--display);font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:0.6rem}
-    .sa-col p{font-size:0.8rem;color:var(--muted2);line-height:1.8}
-    .sa-col p strong{color:var(--text)}
-    .sa-footer{border-top:1px solid var(--border);padding:0.75rem 1.5rem;font-size:0.72rem;color:var(--muted);text-align:center}
-    @media(max-width:600px){.sa-body{grid-template-columns:1fr}.sa-col:first-child{border-right:none;border-bottom:1px solid var(--border)}}
-    .policy-block{border:1px solid var(--border);background:var(--surface);padding:1.75rem;margin-bottom:1.25rem;border-left:3px solid var(--accent)}
-    .policy-block p{font-size:0.82rem;color:var(--muted2);line-height:1.9}
-    .policy-block p strong{color:var(--text)}
-    .policy-list{border:1px solid var(--border);overflow:hidden;margin-bottom:2rem}
-    .policy-item{display:flex;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border);font-size:0.8rem;color:var(--muted2);line-height:1.7;align-items:flex-start}
-    .policy-item:last-child{border-bottom:none}
-    .policy-item::before{content:'→';color:var(--accent);flex-shrink:0}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.55s ease,transform 0.55s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    @media(max-width:768px){.page-hero{padding:3rem 1.5rem 2rem}.section{padding:3rem 1.5rem}.alt-section{padding:3rem 1.5rem}.section-hd h2{font-size:1.6rem}.cards{grid-template-columns:1fr}}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e13;
+      --surface: #111820;
+      --surface2: #161e28;
+      --border: rgba(255,255,255,0.07);
+      --accent: #00e5ff;
+      --accent2: #7c3aed;
+      --green: #00c896;
+      --yellow: #f0b429;
+      --red: #f05a5a;
+      --text: #c8d8e8;
+      --dim: #5a7080;
+      --white: #eef4ff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,14,19,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+    }
+
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 36px; width: auto; }
+
+    .nav-logo span {
+      font-family: 'Orbitron', monospace;
+      font-size: 1rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.5px; color: var(--dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      position: relative; z-index: 1;
+      padding: 100px 32px 80px;
+      text-align: center; overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px; letter-spacing: 4px;
+      color: var(--accent); margin-bottom: 24px; display: block;
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900; line-height: 1.05;
+      color: var(--white); margin-bottom: 24px;
+    }
+
+    h1 em {
+      font-style: italic; color: var(--accent);
+      text-shadow: 0 0 40px rgba(0,229,255,0.35);
+    }
+
+    .hero-sub {
+      max-width: 600px; margin: 0 auto 40px;
+      font-size: 1.05rem; color: var(--dim); line-height: 1.75;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 14px 32px; text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { background: #fff; box-shadow: 0 0 32px rgba(0,229,255,0.4); }
+
+    /* SECTIONS */
+    .section { position: relative; z-index: 1; padding: 80px 32px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 4px;
+      color: var(--accent); margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700; color: var(--white); margin-bottom: 40px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), rgba(0,229,255,0.3), transparent);
+      opacity: 0.25; margin: 0 32px;
+    }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px; transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity 0.3s;
+    }
+
+    .service-card:hover { border-color: rgba(0,229,255,0.25); transform: translateY(-3px); }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon { font-size: 1.6rem; margin-bottom: 14px; }
+
+    .service-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--white); margin-bottom: 4px;
+    }
+
+    .service-badge {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; letter-spacing: 2px;
+      color: var(--accent); margin-bottom: 12px; display: block;
+    }
+
+    .service-desc { font-size: 0.85rem; color: var(--dim); line-height: 1.7; }
+
+    /* SUPPORTED SYSTEMS GRID */
+    .systems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-bottom: 32px;
+    }
+
+    .system-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+
+    .system-group-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 3px;
+      color: var(--accent); margin-bottom: 16px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+
+    .system-list { list-style: none; }
+
+    .system-list li {
+      font-size: 0.84rem; color: var(--text);
+      padding: 7px 0; border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+
+    .system-list li:last-child { border-bottom: none; }
+
+    .system-list li strong {
+      color: var(--white); display: block; font-size: 0.85rem;
+    }
+
+    .system-list li span {
+      color: var(--dim); font-size: 0.78rem;
+    }
+
+    .systems-all-badge {
+      background: var(--surface);
+      border: 1px solid rgba(0,200,150,0.25);
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+
+    .systems-all-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.84rem; color: var(--text);
+    }
+
+    .systems-all-item::before {
+      content: '✓';
+      color: var(--green);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px; flex-shrink: 0;
+    }
+
+    /* ── PRICING SECTION ── */
+    .pricing-section { background: rgba(0,0,0,0.2); }
+
+    .pricing-intro {
+      font-size: 0.88rem; color: var(--dim);
+      max-width: 580px; line-height: 1.8; margin-bottom: 48px;
+    }
+
+    .step-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 3px;
+      color: var(--accent); margin-bottom: 16px; display: block;
+    }
+
+    /* Difficulty cards */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-bottom: 56px;
+    }
+
+    .diff-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px; position: relative;
+      transition: all 0.3s; overflow: hidden;
+    }
+
+    .diff-card.easy  { border-top: 2px solid var(--green); }
+    .diff-card.mod   { border-top: 2px solid var(--yellow); }
+    .diff-card.hard  { border-top: 2px solid var(--red); }
+
+    .diff-card:hover { transform: translateY(-3px); border-color: rgba(0,229,255,0.25); }
+    .diff-card.easy:hover  { border-top-color: var(--green); }
+    .diff-card.mod:hover   { border-top-color: var(--yellow); }
+    .diff-card.hard:hover  { border-top-color: var(--red); }
+
+    .diff-level {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; letter-spacing: 3px; margin-bottom: 6px;
+    }
+    .easy .diff-level { color: var(--green); }
+    .mod  .diff-level { color: var(--yellow); }
+    .hard .diff-level { color: var(--red); }
+
+    .diff-price {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.2rem; font-weight: 900;
+      color: var(--white); margin-bottom: 2px;
+    }
+
+    .diff-range {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; color: var(--dim); margin-bottom: 18px;
+    }
+
+    .diff-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+
+    .diff-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; letter-spacing: 1px;
+      padding: 3px 9px; border: 1px solid;
+    }
+    .easy .diff-tag { color: var(--green);  border-color: rgba(0,200,150,0.35); }
+    .mod  .diff-tag { color: var(--yellow); border-color: rgba(240,180,41,0.35); }
+    .hard .diff-tag { color: var(--red);    border-color: rgba(240,90,90,0.35); }
+
+    .diff-includes { list-style: none; font-size: 0.83rem; color: var(--dim); line-height: 2; }
+    .diff-includes li::before { content: '▸ '; color: var(--accent); font-size: 9px; }
+
+    /* Package cards */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px; margin-bottom: 56px;
+    }
+
+    .pkg-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 28px; position: relative;
+      transition: all 0.3s;
+    }
+
+    .pkg-card.featured {
+      border-color: rgba(0,229,255,0.4);
+      background: linear-gradient(160deg, rgba(0,229,255,0.04), var(--surface));
+    }
+
+    .pkg-card:hover { transform: translateY(-4px); }
+    .pkg-card.featured:hover { box-shadow: 0 16px 50px rgba(0,229,255,0.1); }
+
+    .pkg-popular {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; letter-spacing: 3px;
+      background: var(--accent); color: #000;
+      padding: 4px 14px; white-space: nowrap;
+    }
+
+    .pkg-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--accent); margin-bottom: 4px; letter-spacing: 1px;
+    }
+
+    .pkg-tagline { font-size: 0.78rem; color: var(--dim); font-style: italic; margin-bottom: 20px; }
+
+    .pkg-price {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.4rem; font-weight: 900;
+      color: var(--white); margin-bottom: 2px;
+    }
+
+    .pkg-range {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; color: var(--dim); margin-bottom: 28px;
+    }
+
+    .pkg-features {
+      list-style: none; font-size: 0.85rem; color: var(--text);
+      border-top: 1px solid var(--border);
+      padding-top: 20px; line-height: 2.1;
+    }
+
+    .pkg-features li { display: flex; align-items: center; gap: 10px; }
+    .pkg-features li.off { color: var(--dim); }
+
+    .chk {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 1px solid var(--accent);
+      background: rgba(0,229,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: var(--accent); flex-shrink: 0;
+    }
+    .chk.off { border-color: var(--dim); background: transparent; color: var(--dim); }
+
+    /* Storage */
+    .storage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 10px; margin-bottom: 56px;
+    }
+
+    .storage-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 18px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.22s;
+    }
+
+    .storage-card:hover { border-color: rgba(0,229,255,0.3); background: rgba(0,229,255,0.03); }
+    .storage-card.free { border-color: rgba(0,200,150,0.25); }
+
+    .storage-size {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.95rem; font-weight: 700; color: var(--accent2);
+    }
+    .storage-card.free .storage-size { color: var(--green); }
+
+    .storage-note { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--dim); margin-top: 2px; }
+
+    .storage-price {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.95rem; font-weight: 700; color: var(--white);
+    }
+    .storage-card.free .storage-price { color: var(--green); }
+
+    /* Add-ons */
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 10px; margin-bottom: 56px;
+    }
+
+    .addon-item {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 14px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.84rem; transition: all 0.2s;
+    }
+
+    .addon-item:hover { border-color: rgba(124,58,237,0.35); background: rgba(124,58,237,0.04); }
+    .addon-name { color: var(--text); }
+    .addon-price {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem; color: var(--accent2);
+      margin-left: 12px; white-space: nowrap;
+    }
+
+    /* Example quotes */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px; margin-bottom: 40px;
+    }
+
+    .quote-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 24px 22px;
+    }
+
+    .quote-console {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 2px; margin-bottom: 16px;
+    }
+
+    .quote-row {
+      display: flex; justify-content: space-between;
+      font-size: 0.83rem; padding: 7px 0;
+      border-bottom: 1px solid var(--border); gap: 12px;
+    }
+
+    .quote-row .label { color: var(--dim); }
+    .quote-row .val { font-family: 'Share Tech Mono', monospace; color: var(--white); white-space: nowrap; }
+
+    .quote-total {
+      margin-top: 4px; border-bottom: none;
+      border-top: 1px solid rgba(0,229,255,0.25); padding-top: 10px;
+    }
+    .quote-total .label { color: var(--accent); font-weight: 600; }
+    .quote-total .val { color: var(--accent); font-size: 1rem; font-weight: 700; }
+
+    .legal-note {
+      background: rgba(240,90,90,0.05);
+      border: 1px solid rgba(240,90,90,0.18);
+      border-left: 3px solid var(--red);
+      padding: 20px 24px;
+      font-size: 0.83rem; color: var(--dim); line-height: 1.8;
+    }
+
+    .legal-note strong {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; letter-spacing: 2px;
+      color: var(--red); display: block; margin-bottom: 8px;
+    }
+
+    /* FORM */
+    .form-section { background: rgba(0,0,0,0.15); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; letter-spacing: 2px;
+      color: var(--dim); display: block; margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; padding: 12px 14px;
+      outline: none; transition: border-color 0.2s; appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus { border-color: rgba(0,229,255,0.4); }
+    textarea { resize: vertical; min-height: 120px; }
+    select option { background: var(--surface); }
+
+    .direct-contact { display: flex; flex-direction: column; gap: 14px; }
+
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text); font-size: 0.9rem;
+      padding: 16px 18px;
+      background: var(--surface); border: 1px solid var(--border);
+      transition: all 0.22s;
+    }
+
+    .contact-link:hover { border-color: rgba(0,229,255,0.3); color: var(--accent); }
+    .contact-link .icon { font-size: 1.1rem; }
+
+    /* SERVICE AREA */
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-bottom: 28px;
+    }
+
+    .area-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+
+    .area-card-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--white); margin-bottom: 10px;
+    }
+
+    .area-card p { font-size: 0.84rem; color: var(--dim); line-height: 1.75; }
+    .area-card p strong { color: var(--text); }
+
+    .area-address {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 1.5px;
+      color: var(--dim); text-align: center; padding: 16px 0 0;
+    }
 
     /* FOOTER */
-    footer{background:var(--surface);border-top:2px solid var(--accent);margin-top:2rem}
-    .footer-main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;align-items:start}
-    .footer-col{}
-    .footer-brand{font-family:var(--display);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.5rem}
-    .footer-brand span{color:var(--accent)}
-    .footer-tagline{font-size:0.73rem;color:var(--muted);line-height:1.7}
-    .footer-col-label{font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:0.7rem;display:block}
-    .footer-nav{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
-    .footer-nav a{font-size:0.75rem;color:var(--muted2);text-decoration:none;transition:color 0.2s,padding-left 0.2s;display:block}
-    .footer-nav a:hover{color:var(--accent);padding-left:4px}
-    .footer-contact-list{display:flex;flex-direction:column;gap:0.5rem}
-    .footer-contact-list a{font-size:0.75rem;color:var(--muted2);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
-    .footer-contact-list a:hover{color:var(--accent)}
-    .footer-bottom{border-top:1px solid var(--border);max-width:1100px;margin:0 auto;padding:0.75rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
-    .footer-bottom p{font-size:0.62rem;color:var(--muted)}
-    @media(max-width:700px){.footer-main{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem}.footer-bottom{flex-direction:column;text-align:center;padding:0.75rem 1.5rem}}
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 48px 32px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+
+    .footer-brand .footer-logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.1rem; font-weight: 900;
+      color: var(--white); margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      font-size: 0.82rem; color: var(--dim); line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px; letter-spacing: 3px;
+      color: var(--accent); margin-bottom: 16px;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 0.82rem; color: var(--dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-contact-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact-links a {
+      font-size: 0.82rem; color: var(--dim);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-contact-links a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px;
+    }
+
+    .footer-copy {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 2px; color: var(--dim);
+    }
+
+    .footer-tagline {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 1px; color: var(--dim);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * { animation: fadeUp 0.6s ease both; }
+    .hero .hero-eyebrow { animation-delay: 0.05s; }
+    .hero h1            { animation-delay: 0.15s; }
+    .hero .hero-sub     { animation-delay: 0.25s; }
+    .hero .btn          { animation-delay: 0.35s; }
+
+    @media (max-width: 700px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
   </style>
-  <meta name="description" content="Expert console modding in Eastanollee, GA. PS1-PS5, Xbox, Nintendo Switch, Wii, N64, 3DS, Game Boy and more."/>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Byte Buster"/><span>Byte Buster</span></a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="pc-repair.html">PC Repair</a>
-      <a href="console-modding.html" class="active">Console Mods</a>
-      <a href="custom-pc-builds.html">Custom Builds</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="faq.html">FAQ</a>
-      <a href="about.html">About</a>
-      <a href="policy.html">Policy</a>
-    </div>
-    <button class="hamburger" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a href="https://bytebusterga.github.io/index.html" class="nav-logo">
+      <img src="https://bytebusterga.github.io/images/logo.png" alt="Byte Buster">
+      <span>Byte Buster</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://bytebusterga.github.io/index.html">Home</a></li>
+      <li><a href="https://bytebusterga.github.io/pc-repair.html">PC Repair</a></li>
+      <li><a href="https://bytebusterga.github.io/console-modding.html" class="active">Console Mods</a></li>
+      <li><a href="https://bytebusterga.github.io/custom-pc-builds.html">Custom Builds</a></li>
+      <li><a href="https://bytebusterga.github.io/pricing.html">Pricing</a></li>
+      <li><a href="https://bytebusterga.github.io/faq.html">FAQ</a></li>
+      <li><a href="https://bytebusterga.github.io/about.html">About</a></li>
+      <li><a href="https://bytebusterga.github.io/policy.html">Policy</a></li>
+    </ul>
   </div>
 </nav>
-<div class="mob-menu" id="mob">
-  <a href="index.html">Home</a>
-  <a href="pc-repair.html">PC Repair</a>
-  <a href="console-modding.html" class="active">Console Mods</a>
-  <a href="custom-pc-builds.html">Custom Builds</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="faq.html">FAQ</a>
-  <a href="about.html">About</a>
-  <a href="policy.html">Policy</a>
-</div>
-<div class="page-hero">
-  <div class="hero-tag">// Console Modding &amp; Repair — Eastanollee, GA</div>
-  <h1>Level Up<em>Your Console.</em></h1>
-  <p>Northeast Georgia's go-to for console modding and repair. Based in Eastanollee, GA — serving Toccoa, Cornelia, Lavonia, Hartwell and beyond. Every mod handled personally with nationwide mail-in available.</p>
-  <a href="#contact" class="btn btn-primary">Request a Personalized Customization &#8594;</a>
-</div>
 
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-eyebrow">// Console Modding & Repair — Eastanollee, GA</span>
+  <h1>Level Up<br><em>Your Console.</em></h1>
+  <p class="hero-sub">Northeast Georgia's go-to for console modding and repair. Based in Eastanollee, GA — serving Toccoa, Cornelia, Lavonia, Hartwell and beyond. Every mod handled personally with nationwide mail-in available.</p>
+  <a href="#contact" class="btn btn-primary">Request a Personalized Customization →</a>
+</section>
+
+<div class="divider"></div>
+
+<!-- 01 WHAT I CAN DO -->
 <section class="section">
-  <div class="section-hd reveal"><span class="section-num">01</span><h2>What I Can Do</h2><div class="section-line"></div></div>
-  <div class="cards reveal">
-    <div class="card"><span class="card-icon">&#128170;</span><div class="card-title">Softmods</div><p class="card-desc">Classic Xbox, PS2, Wii, and handheld softmods done safely without permanent hardware modification.</p><span class="card-tag">Retro</span></div>
-    <div class="card"><span class="card-icon">&#128640;</span><div class="card-title">Firmware Upgrades</div><p class="card-desc">Custom firmware installs for modern systems — expand functionality beyond factory limitations.</p><span class="card-tag">Modern</span></div>
-    <div class="card"><span class="card-icon">&#128275;</span><div class="card-title">Region Unlocks</div><p class="card-desc">Play games from any region on your console. Handled carefully and tested thoroughly before return.</p><span class="card-tag">Multi-Region</span></div>
-    <div class="card"><span class="card-icon">&#128194;</span><div class="card-title">Emulators &amp; Loaders</div><p class="card-desc">Install emulators, backup loaders, and custom dashboards for a fully expanded gaming experience.</p><span class="card-tag">Homebrew</span></div>
-    <div class="card"><span class="card-icon">&#128296;</span><div class="card-title">HDMI Port Repair</div><p class="card-desc">Broken HDMI on PS5, PS4, or Xbox? Precision soldering to get your console outputting video again.</p><span class="card-tag">Hardware</span></div>
-    <div class="card"><span class="card-icon">&#128230;</span><div class="card-title">Nationwide Mail-In</div><p class="card-desc">Ship your console from anywhere in the U.S. I'll mod it and send it back fast and securely.</p><span class="card-tag">Mail-In</span></div>
+  <div class="section-inner">
+    <div class="section-eyebrow">01</div>
+    <div class="section-title">What I Can Do</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💪</div>
+        <div class="service-name">Softmods</div>
+        <span class="service-badge">RETRO</span>
+        <p class="service-desc">Classic Xbox, PS2, Wii, and handheld softmods done safely without permanent hardware modification.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <div class="service-name">Firmware Upgrades</div>
+        <span class="service-badge">MODERN</span>
+        <p class="service-desc">Custom firmware installs for modern systems — expand functionality beyond factory limitations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔓</div>
+        <div class="service-name">Region Unlocks</div>
+        <span class="service-badge">MULTI-REGION</span>
+        <p class="service-desc">Play games from any region on your console. Handled carefully and tested thoroughly before return.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📂</div>
+        <div class="service-name">Emulators & Loaders</div>
+        <span class="service-badge">HOMEBREW</span>
+        <p class="service-desc">Install emulators, backup loaders, and custom dashboards for a fully expanded gaming experience.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔨</div>
+        <div class="service-name">HDMI Port Repair</div>
+        <span class="service-badge">HARDWARE</span>
+        <p class="service-desc">Broken HDMI on PS5, PS4, or Xbox? Precision soldering to get your console outputting video again.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <div class="service-name">Nationwide Mail-In</div>
+        <span class="service-badge">MAIL-IN</span>
+        <p class="service-desc">Ship your console from anywhere in the U.S. I'll mod it and send it back fast and securely.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="alt-section">
-  <div class="alt-inner">
-    <div class="section-hd reveal"><span class="section-num">02</span><h2>Supported Systems</h2><div class="section-line"></div></div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)" class="reveal">
-      <div style="background:var(--surface);padding:1.25rem">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">&#127918; Nintendo</div>
-        <div style="display:flex;flex-direction:column;gap:0.35rem">
-          <div style="font-size:0.78rem;color:var(--muted2)">Game Boy / GBC / GBA SP — IPS mods, shell swap</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">Nintendo 3DS / 2DS — CFW, region unlock, homebrew</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">Nintendo 64 — region unlock, Everdrive setup</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">Nintendo Wii — Homebrew, USB Loader, emulators</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">Nintendo Switch — CFW unlock &amp; storage upgrade <span style="color:var(--accent);font-size:0.7rem">(unpatched only, no screen repairs)</span></div>
-        </div>
+<div class="divider"></div>
+
+<!-- 02 SUPPORTED SYSTEMS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">02</div>
+    <div class="section-title">Supported Systems</div>
+    <div class="systems-grid">
+      <div class="system-group">
+        <div class="system-group-title">🎮 NINTENDO HANDHELDS</div>
+        <ul class="system-list">
+          <li><strong>Game Boy / GBC / GBA SP</strong><span>IPS mods, shell swap, rechargeable battery mod</span></li>
+          <li><strong>Nintendo 3DS / 2DS</strong><span>CFW (Luma3DS), region unlock, homebrew</span></li>
+        </ul>
       </div>
-      <div style="background:var(--surface);padding:1.25rem">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">&#127918; PlayStation</div>
-        <div style="display:flex;flex-direction:column;gap:0.35rem">
-          <div style="font-size:0.78rem;color:var(--muted2)">PlayStation 1 — modchip, region unlock</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">PlayStation 2 — softmod, FreeHDBoot, OPL</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">PlayStation 3 — CFW/HEN, HDMI repair, storage</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">PlayStation 4 — HDMI repair, firmware consult</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">PlayStation 5 — HDMI port repair</div>
-        </div>
+      <div class="system-group">
+        <div class="system-group-title">🎮 NINTENDO HOME CONSOLES</div>
+        <ul class="system-list">
+          <li><strong>Nintendo 64</strong><span>Region unlock, Everdrive setup, controller port repair</span></li>
+          <li><strong>Nintendo Wii</strong><span>Homebrew Channel, USB Loader, emulators</span></li>
+          <li><strong>Nintendo Switch</strong><span>CFW unlock &amp; storage upgrade (unpatched only, no screen repairs)</span></li>
+        </ul>
       </div>
-      <div style="background:var(--surface);padding:1.25rem;border-top:1px solid var(--border)">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">&#127918; Xbox</div>
-        <div style="display:flex;flex-direction:column;gap:0.35rem">
-          <div style="font-size:0.78rem;color:var(--muted2)">Original Xbox — softmod, XBMC dashboard</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">Xbox 360 — RGH/JTAG consult, dashboard mods</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">Xbox One — HDMI repair, storage upgrade</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">Xbox Series X/S — HDMI repair, storage upgrade</div>
-        </div>
+      <div class="system-group">
+        <div class="system-group-title">🎮 PLAYSTATION</div>
+        <ul class="system-list">
+          <li><strong>PlayStation 1</strong><span>Modchip install, region unlock</span></li>
+          <li><strong>PlayStation 2</strong><span>Softmod, FreeHDBoot, OPL install</span></li>
+          <li><strong>PlayStation 3</strong><span>CFW / HEN install, HDMI repair, storage upgrade</span></li>
+          <li><strong>PlayStation 4</strong><span>HDMI repair, firmware consult</span></li>
+          <li><strong>PlayStation 5</strong><span>HDMI port repair</span></li>
+        </ul>
       </div>
-      <div style="background:var(--surface);padding:1.25rem;border-top:1px solid var(--border)">
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem">&#128230; All Systems</div>
-        <div style="display:flex;flex-direction:column;gap:0.35rem">
-          <div style="font-size:0.78rem;color:var(--muted2)">&#10003; Local drop-off by appointment</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">&#10003; Nationwide mail-in available</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">&#10003; Every job handled personally</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">&#10003; Quote before any work begins</div>
-          <div style="font-size:0.78rem;color:var(--muted2)">&#10003; Not sure? Just ask — I'll let you know</div>
+      <div class="system-group">
+        <div class="system-group-title">🎮 XBOX</div>
+        <ul class="system-list">
+          <li><strong>Original Xbox</strong><span>Softmod, XBMC dashboard, expanded storage</span></li>
+          <li><strong>Xbox 360</strong><span>RGH/JTAG consult, dashboard mods</span></li>
+          <li><strong>Xbox One</strong><span>HDMI repair, storage upgrade, firmware consult</span></li>
+          <li><strong>Xbox Series X/S</strong><span>HDMI repair, storage upgrade</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="systems-all-badge">
+      <div class="systems-all-item">Local drop-off by appointment</div>
+      <div class="systems-all-item">Nationwide mail-in available</div>
+      <div class="systems-all-item">Every job handled personally</div>
+      <div class="systems-all-item">Quote before any work begins</div>
+      <div class="systems-all-item">Not sure? Just ask — I'll let you know</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 03 PRICING -->
+<section class="section pricing-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">03 — PRICING</div>
+    <div class="section-title">Homebrew &amp; Mod Pricing</div>
+
+    <p class="pricing-intro">
+      Pricing starts with a base install fee based on your console's difficulty level. From there, choose a package to unlock more features — or keep it simple with just the basics. Storage upgrades and add-ons are always optional. All prices are estimates; a final quote is confirmed before any work begins.
+    </p>
+
+    <!-- Step 1: Difficulty -->
+    <span class="step-label">▸ STEP 1 — BASE INSTALL (BY DIFFICULTY)</span>
+    <div class="diff-grid">
+      <div class="diff-card easy">
+        <div class="diff-level">◈ EASY — SOFTMOD ONLY</div>
+        <div class="diff-price">$40</div>
+        <div class="diff-range">Starting from — $40–$60</div>
+        <div class="diff-tags">
+          <span class="diff-tag">Wii</span>
+          <span class="diff-tag">3DS / 2DS</span>
+          <span class="diff-tag">PS Vita</span>
+          <span class="diff-tag">PS2</span>
+        </div>
+        <ul class="diff-includes">
+          <li>Compatibility check</li>
+          <li>Exploit + homebrew install</li>
+          <li>Essential apps setup</li>
+          <li>Basic customer walkthrough</li>
+        </ul>
+      </div>
+      <div class="diff-card mod">
+        <div class="diff-level">◈ MODERATE — FIRMWARE DEPENDENT</div>
+        <div class="diff-price">$60</div>
+        <div class="diff-range">Starting from — $60–$90</div>
+        <div class="diff-tags">
+          <span class="diff-tag">PS3</span>
+          <span class="diff-tag">PS4</span>
+          <span class="diff-tag">Xbox 360</span>
+          <span class="diff-tag">OG Xbox</span>
+        </div>
+        <ul class="diff-includes">
+          <li>System compatibility check</li>
+          <li>CFW / HFW install</li>
+          <li>Homebrew environment setup</li>
+          <li>Basic app suite</li>
+        </ul>
+      </div>
+      <div class="diff-card hard">
+        <div class="diff-level">◈ HARD — MODCHIP / RISKY</div>
+        <div class="diff-price">$90</div>
+        <div class="diff-range">Starting from — $90–$150</div>
+        <div class="diff-tags">
+          <span class="diff-tag">Switch</span>
+          <span class="diff-tag">PS1 Modchip</span>
+        </div>
+        <ul class="diff-includes">
+          <li>Modchip hardware install</li>
+          <li>Custom firmware + Atmosphere</li>
+          <li>Risk assessment &amp; prep</li>
+          <li>Full setup &amp; testing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 2: Packages -->
+    <span class="step-label">▸ STEP 2 — CHOOSE A PACKAGE</span>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-name">BASIC</div>
+        <div class="pkg-tagline">Just get me running</div>
+        <div class="pkg-price">+$0</div>
+        <div class="pkg-range">Included with base install</div>
+        <ul class="pkg-features">
+          <li><span class="chk">✓</span> Homebrew / CFW installed</li>
+          <li><span class="chk">✓</span> Essential apps</li>
+          <li><span class="chk">✓</span> Basic walkthrough</li>
+          <li class="off"><span class="chk off">—</span> Game / backup loader</li>
+          <li class="off"><span class="chk off">—</span> Emulator pack</li>
+          <li class="off"><span class="chk off">—</span> Game library</li>
+        </ul>
+      </div>
+      <div class="pkg-card featured">
+        <div class="pkg-popular">⚡ MOST POPULAR</div>
+        <div class="pkg-name">GAMER SETUP</div>
+        <div class="pkg-tagline">Play backups &amp; classic games</div>
+        <div class="pkg-price">+$40</div>
+        <div class="pkg-range">Total approx. $80–$120</div>
+        <ul class="pkg-features">
+          <li><span class="chk">✓</span> Everything in Basic</li>
+          <li><span class="chk">✓</span> Game / backup manager</li>
+          <li><span class="chk">✓</span> Emulator pack installed</li>
+          <li><span class="chk">✓</span> Controller configuration</li>
+          <li><span class="chk">✓</span> Organized folder structure</li>
+          <li class="off"><span class="chk off">—</span> Game library</li>
+        </ul>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">ULTIMATE RETRO</div>
+        <div class="pkg-tagline">Plug in. Play everything.</div>
+        <div class="pkg-price">+$80</div>
+        <div class="pkg-range">Total approx. $120–$180+</div>
+        <ul class="pkg-features">
+          <li><span class="chk">✓</span> Everything in Gamer Setup</li>
+          <li><span class="chk">✓</span> Curated game library</li>
+          <li><span class="chk">✓</span> Box art &amp; metadata scraped</li>
+          <li><span class="chk">✓</span> Custom dashboard theme</li>
+          <li><span class="chk">✓</span> Full plug-and-play ready</li>
+          <li><span class="chk">✓</span> Storage upgrade available</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 3: Storage -->
+    <span class="step-label">▸ STEP 3 — STORAGE UPGRADE (OPTIONAL)</span>
+    <div class="storage-grid">
+      <div class="storage-card free">
+        <div>
+          <div class="storage-size">Your Drive</div>
+          <div class="storage-note">Customer-provided</div>
+        </div>
+        <div class="storage-price">FREE</div>
+      </div>
+      <div class="storage-card">
+        <div>
+          <div class="storage-size">128 GB</div>
+          <div class="storage-note">~1,500 classic titles</div>
+        </div>
+        <div class="storage-price">+$25</div>
+      </div>
+      <div class="storage-card">
+        <div>
+          <div class="storage-size">256 GB</div>
+          <div class="storage-note">~3,000 classic titles</div>
+        </div>
+        <div class="storage-price">+$40</div>
+      </div>
+      <div class="storage-card">
+        <div>
+          <div class="storage-size">512 GB</div>
+          <div class="storage-note">~6,000 classic titles</div>
+        </div>
+        <div class="storage-price">+$70</div>
+      </div>
+      <div class="storage-card">
+        <div>
+          <div class="storage-size">1 TB</div>
+          <div class="storage-note">Full multi-gen library</div>
+        </div>
+        <div class="storage-price">+$120</div>
+      </div>
+    </div>
+
+    <!-- Add-ons -->
+    <span class="step-label">▸ OPTIONAL ADD-ONS</span>
+    <div class="addons-grid">
+      <div class="addon-item"><span class="addon-name">Game / backup library setup</span><span class="addon-price">$20–$50</span></div>
+      <div class="addon-item"><span class="addon-name">Emulator pack only</span><span class="addon-price">+$15</span></div>
+      <div class="addon-item"><span class="addon-name">Custom theme / dashboard</span><span class="addon-price">+$10</span></div>
+      <div class="addon-item"><span class="addon-name">NAND backup</span><span class="addon-price">+$15</span></div>
+      <div class="addon-item"><span class="addon-name">Overclock config (Switch)</span><span class="addon-price">+$20</span></div>
+      <div class="addon-item"><span class="addon-name">Box art &amp; metadata scrape</span><span class="addon-price">+$10</span></div>
+    </div>
+
+    <!-- Example Builds -->
+    <span class="step-label">▸ EXAMPLE BUILDS</span>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <div class="quote-console" style="color:var(--green);">Wii — Gamer Setup</div>
+        <div class="quote-row"><span class="label">Base install (easy)</span><span class="val">$60</span></div>
+        <div class="quote-row"><span class="label">Gamer Setup package</span><span class="val">+$40</span></div>
+        <div class="quote-row quote-total"><span class="label">Total</span><span class="val">$100</span></div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-console" style="color:var(--yellow);">PS4 — Ultimate + 512GB</div>
+        <div class="quote-row"><span class="label">Base install (moderate)</span><span class="val">$70</span></div>
+        <div class="quote-row"><span class="label">Ultimate Retro package</span><span class="val">+$80</span></div>
+        <div class="quote-row"><span class="label">512GB storage upgrade</span><span class="val">+$70</span></div>
+        <div class="quote-row quote-total"><span class="label">Total</span><span class="val">$220</span></div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-console" style="color:var(--red);">Switch — Ultimate + 256GB</div>
+        <div class="quote-row"><span class="label">Base install (hard)</span><span class="val">$120</span></div>
+        <div class="quote-row"><span class="label">Ultimate Retro package</span><span class="val">+$80</span></div>
+        <div class="quote-row"><span class="label">256GB storage upgrade</span><span class="val">+$40</span></div>
+        <div class="quote-row quote-total"><span class="label">Total</span><span class="val">$240</span></div>
+      </div>
+    </div>
+
+    <!-- Legal -->
+    <div class="legal-note">
+      <strong>⚠ NOTICE</strong>
+      All services are performed to enable homebrew software, custom firmware, and backup management of legally owned content. I install backup loaders and game managers only — I do not supply, distribute, or source game content. Customers are responsible for compliance with local copyright laws. All prices are estimates and subject to a final confirmed quote before any work begins.
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 04 REQUEST FORM -->
+<section class="section form-section" id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">04</div>
+    <div class="section-title">Request a Customization</div>
+    <div class="contact-grid">
+      <div>
+        <form action="https://formsubmit.co/agibson2446@yahoo.com" method="POST">
+          <input type="hidden" name="_subject" value="New Console Mod Request — Byte Buster">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://bytebusterga.github.io/thank-you.html">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (Optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="706-555-0000">
+          </div>
+          <div class="form-group">
+            <label for="device">Device Type</label>
+            <select id="device" name="device">
+              <option value="">Select...</option>
+              <optgroup label="PlayStation">
+                <option>PS5</option><option>PS4</option><option>PS3</option>
+                <option>PS2</option><option>PS1</option>
+              </optgroup>
+              <optgroup label="Xbox">
+                <option>Xbox Series X/S</option><option>Xbox One</option>
+                <option>Xbox 360</option><option>Original Xbox</option>
+              </optgroup>
+              <optgroup label="Nintendo">
+                <option>Nintendo Switch</option><option>Nintendo Wii</option>
+                <option>Nintendo 64</option><option>Nintendo 3DS / 2DS</option>
+                <option>Game Boy / GBC / GBA SP</option>
+              </optgroup>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="details">What Customization Are You Looking For?</label>
+            <textarea id="details" name="details" placeholder="Describe what you're looking for — homebrew, emulators, HDMI repair, etc." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; text-align:center; cursor:pointer; border:none;">Send Request →</button>
+        </form>
+        <p style="font-size:0.78rem; color:var(--dim); margin-top:12px; line-height:1.7;">
+          <strong style="color:var(--text);">Response within 24 hours.</strong> I personally review every request.
+        </p>
+      </div>
+      <div>
+        <p style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--dim); margin-bottom:16px;">// Or reach me directly:</p>
+        <div class="direct-contact">
+          <a href="https://www.facebook.com/bytebusterga" class="contact-link" target="_blank" rel="noopener">
+            <span class="icon">💬</span> Facebook
+          </a>
+          <a href="mailto:agibson2446@yahoo.com" class="contact-link">
+            <span class="icon">📧</span> agibson2446@yahoo.com
+          </a>
+          <a href="tel:7062440698" class="contact-link">
+            <span class="icon">📞</span> 706-244-0698
+          </a>
+        </div>
+
+        <div style="margin-top: 36px;">
+          <p style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:var(--dim); margin-bottom:16px;">// Service Area</p>
+          <div class="area-card" style="margin-bottom:12px;">
+            <div class="area-card-title">Local Drop-Off</div>
+            <p>Based in <strong>Eastanollee, GA</strong> (Stephens County). Customers come from <strong>Toccoa, Cornelia, Lavonia, Hartwell, Toccoa Falls, Martin</strong> and <strong>Westminster, SC</strong>. Drop-off by appointment.</p>
+          </div>
+          <div class="area-card">
+            <div class="area-card-title">Nationwide Mail-In</div>
+            <p>Not local? Ship your device from anywhere in the U.S. I fix it personally and send it back fast — every job handled by one experienced technician.</p>
+          </div>
+          <p class="area-address" style="margin-top:16px;">📍 300 Camp Rd, Eastanollee, GA 30538 &nbsp;•&nbsp; 📞 706-244-0698</p>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<section class="section" id="contact">
-  <div class="section-hd reveal"><span class="section-num">03</span><h2>Request a Customization</h2><div class="section-line"></div></div>
-  <div style="margin-bottom:1.5rem" class="reveal">
-    <div style="font-family:var(--display);font-size:1.6rem;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.5rem">Request a Personalized Customization</div>
-    <p style="font-size:0.82rem;color:var(--muted2);line-height:1.8;max-width:560px">Tell me your console and what you're looking to do with it. I handle every mod personally and will walk you through your options before any work begins.</p>
-  </div>
-  <div class="form-shell">
-    <form action="https://formsubmit.co/agibson2446@yahoo.com" method="POST">
-      <input type="hidden" name="_subject" value="Console Customization Request - Byte Buster"/>
-      <input type="hidden" name="_captcha" value="false"/>
-      <input type="hidden" name="_next" value="https://bytebusterga.github.io/console-modding.html"/>
-      <div class="form-row">
-        <div class="form-field"><label for="fn">Your Name</label><input type="text" id="fn" name="name" placeholder="John Doe" required/></div>
-        <div class="form-field"><label for="fe">Email Address</label><input type="email" id="fe" name="email" placeholder="you@example.com" required/></div>
-      </div>
-      <div class="form-row">
-        <div class="form-field"><label for="fp">Phone (Optional)</label><input type="tel" id="fp" name="phone" placeholder="(706) 555-0123"/></div>
-        <div class="form-field"><label for="fd">Device Type</label>
-          <select id="fd" name="device">
-            <option value="">Select...</option>
-            <option>PS5</option><option>PS4</option><option>PS3</option><option>PS2</option><option>PS1</option><option>Xbox Series X/S</option><option>Xbox One</option><option>Xbox 360</option><option>Original Xbox</option><option>Nintendo Switch</option><option>Nintendo Wii</option><option>Nintendo 64</option><option>Nintendo 3DS / 2DS</option><option>Game Boy / GBC / GBA SP</option><option>Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-field full"><label for="fm">What Customization Are You Looking For?</label><textarea id="fm" name="message" placeholder="Tell me your console and what you want to do with it..." required></textarea></div>
-      <div class="form-bar">
-        <p><strong>Response within 24 hours.</strong><br/>I personally review every request.</p>
-        <button type="submit">Send Request &#8594;</button>
-      </div>
-    </form>
-  </div>
-  <div class="form-backup">
-    <span class="form-backup-lbl">Or reach me directly:</span>
-    <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
-      <a href="https://www.facebook.com/bytebusterga" target="_blank" class="backup-link">&#128172; Facebook</a>
-      <a href="mailto:agibson2446@yahoo.com" class="backup-link">&#128231; Email</a>
-      <a href="tel:7062440698" class="backup-link">&#128222; Call</a>
-    </div>
-  </div>
 </section>
-<div class="service-area reveal" style="max-width:900px;margin:2rem auto 0">
-  <div class="sa-header">// Service Area</div>
-  <div class="sa-body">
-    <div class="sa-col"><div class="sa-col-title">Local Drop-Off</div><p>Based in <strong>Eastanollee, GA</strong> (Stephens County). Customers come from <strong>Toccoa, Cornelia, Lavonia, Hartwell, Toccoa Falls, Martin</strong> and <strong>Westminster, SC</strong>. Drop-off by appointment.</p></div>
-    <div class="sa-col"><div class="sa-col-title">Nationwide Mail-In</div><p>Not local? Ship your device from anywhere in the U.S. I fix it personally and send it back fast — every job handled by one experienced technician.</p></div>
-  </div>
-  <div class="sa-footer">&#128205; 300 Camp Rd, Eastanollee, GA 30538 &nbsp;&bull;&nbsp; &#128222; 706-244-0698 &nbsp;&bull;&nbsp; Stephens County, GA</div>
-</div>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-main">
-    <div class="footer-col">
-      <div class="footer-brand">Byte<span>Buster</span></div>
-      <p class="footer-tagline">Expert Repair. Honest Pricing. Personal Service.</p>
-      <p class="footer-tagline">Eastanollee, GA &middot; Serving Northeast Georgia &amp; nationwide.</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">ByteBuster</div>
+      <p>Expert Repair. Honest Pricing. Personal Service.<br>Eastanollee, GA · Serving Northeast Georgia &amp; nationwide.</p>
     </div>
-    <div class="footer-col">
-      <span class="footer-col-label">Pages</span>
-      <ul class="footer-nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pc-repair.html">PC Repair</a></li>
-        <li><a href="console-modding.html">Console Mods</a></li>
-        <li><a href="custom-pc-builds.html">Custom Builds</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="faq.html">FAQ</a></li>
+    <div>
+      <div class="footer-col-title">// Pages</div>
+      <ul class="footer-links">
+        <li><a href="https://bytebusterga.github.io/index.html">Home</a></li>
+        <li><a href="https://bytebusterga.github.io/pc-repair.html">PC Repair</a></li>
+        <li><a href="https://bytebusterga.github.io/console-modding.html">Console Mods</a></li>
+        <li><a href="https://bytebusterga.github.io/custom-pc-builds.html">Custom Builds</a></li>
+        <li><a href="https://bytebusterga.github.io/pricing.html">Pricing</a></li>
+        <li><a href="https://bytebusterga.github.io/faq.html">FAQ</a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <span class="footer-col-label">Contact</span>
-      <div class="footer-contact-list">
-        <a href="tel:7062440698">&#128222; 706-244-0698</a>
-        <a href="mailto:agibson2446@yahoo.com">&#128231; agibson2446@yahoo.com</a>
-        <a href="https://www.facebook.com/bytebusterga" target="_blank">&#128172; Facebook</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=300+Camp+Rd,+Eastanollee,+GA+30538" target="_blank">&#128205; 300 Camp Rd, Eastanollee, GA</a>
+    <div>
+      <div class="footer-col-title">// Contact</div>
+      <div class="footer-contact-links">
+        <a href="tel:7062440698">📞 706-244-0698</a>
+        <a href="mailto:agibson2446@yahoo.com">📧 agibson2446@yahoo.com</a>
+        <a href="https://www.facebook.com/bytebusterga" target="_blank" rel="noopener">💬 Facebook</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=300+Camp+Rd,+Eastanollee,+GA+30538" target="_blank" rel="noopener">📍 300 Camp Rd, Eastanollee, GA</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2026 Byte Buster</p>
-    <p>Toccoa &middot; Cornelia &middot; Lavonia &middot; Hartwell &middot; Northeast GA</p>
+    <div class="footer-copy">© 2026 Byte Buster</div>
+    <div class="footer-tagline">Toccoa · Cornelia · Lavonia · Hartwell · Northeast GA</div>
   </div>
 </footer>
-<script>
-var hbg=document.getElementById("hbg"),mob=document.getElementById("mob");
-if(hbg&&mob){hbg.addEventListener("click",function(){hbg.classList.toggle("open");mob.classList.toggle("open")});mob.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){hbg.classList.remove("open");mob.classList.remove("open")})})}
-document.querySelectorAll(".reveal").forEach(function(el){new IntersectionObserver(function(e,o){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add("visible");o.unobserve(en.target)}})},{threshold:0.1}).observe(el)});
-</script>
+
 </body>
 </html>
