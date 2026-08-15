@@ -1120,7 +1120,19 @@
   if(hbg&&mob){hbg.addEventListener("click",function(){hbg.classList.toggle("open");mob.classList.toggle("open")});mob.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){hbg.classList.remove("open");mob.classList.remove("open")})})}
 
   // Scroll reveal
-  document.querySelectorAll(".reveal").forEach(function(el){new IntersectionObserver(function(e,o){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add("visible");o.unobserve(en.target)}})},{threshold:0,rootMargin:"0px 0px -40px 0px"}).observe(el)});
+document.querySelectorAll(".reveal").forEach(function(el){
+    new IntersectionObserver(function(entries, observer){
+        entries.forEach(function(entry){
+            if(entry.isIntersecting){
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0,
+        rootMargin: "0px"
+    }).observe(el);
+});
 
   // Custom builder
   function updateTotal(){
