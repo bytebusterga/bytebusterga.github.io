@@ -275,7 +275,7 @@
     @media(max-width:768px){.builder-grid{grid-template-columns:repeat(2,1fr)}.builder-hd{flex-direction:column}.builder-total-box{width:100%;text-align:left}}
     @media(max-width:480px){.builder-grid{grid-template-columns:1fr}}
   </style>
-</head>
+ </head>
 <body>
 
 <nav>
@@ -1113,8 +1113,7 @@
     <p>Toccoa &middot; Cornelia &middot; Lavonia &middot; Hartwell &middot; Northeast GA</p>
   </div>
 </footer>
-
-<script>
+ <script>
   // Nav hamburger
   var hbg=document.getElementById("hbg"),mob=document.getElementById("mob");
   if(hbg&&mob){hbg.addEventListener("click",function(){hbg.classList.toggle("open");mob.classList.toggle("open")});mob.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){hbg.classList.remove("open");mob.classList.remove("open")})})}
@@ -1164,6 +1163,26 @@ document.querySelectorAll(".reveal").forEach(function(el){
   }
 
   // FAQ toggle
-  function faqToggle(btn){
+ function faqToggle(btn){
     var expanded=btn.getAttribute("aria-expanded")==="true";
-    document.querySelectorAll(".faq-btn"
+
+    document.querySelectorAll(".faq-btn").forEach(function(b){
+        b.setAttribute("aria-expanded","false");
+    });
+
+    document.querySelectorAll(".faq-body").forEach(function(b){
+        b.classList.remove("open");
+    });
+
+    if(!expanded){
+        btn.setAttribute("aria-expanded","true");
+
+        var body=btn.nextElementSibling;
+
+        if(body){
+            body.classList.add("open");
+        }
+    }
+}
+  </script>
+
