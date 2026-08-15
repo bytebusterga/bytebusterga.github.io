@@ -163,9 +163,18 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden;padding-top:60px}
-    body::after{content:'';position:fixed;inset:0;z-index:-1;background-color:#080b12;background-image:linear-gradient(rgba(43,159,217,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(43,159,217,0.06) 1px,transparent 1px),linear-gradient(rgba(43,159,217,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(43,159,217,0.03) 1px,transparent 1px);background-size:80px 80px,80px 80px,20px 20px,20px 20px}
-    body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 50%,rgba(43,159,217,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(43,159,217,0.05) 0%,transparent 50%);pointer-events:none}
+    body::after{content:'';
+  position:fixed;inset:0; z-index:-2; background-color:#080b12;
+  background-image:linear-gradient(rgba(43,159,217,0.06) 1px,transparent 1px), linear gradient(90deg,rgba(43,159,217,0.06) 1px,transparent 1px),linear-gradient(rgba(43,159,217,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(43,159,217,0.03) 1px,transparent 1px);
+  background-size:80px 80px, 80px 80px, 20px 20px,20px 20px;
+  pointer-events:none;
+}
 
+body::before{content:''; position:fixed; inset:0; z-index:-1; background:radial-gradient(ellipse at 20% 50%,
+      rgba(43,159,217,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(43,159,217,0.05) 0%,
+      transparent 50%);pointer-events:none;
+}
     nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;background:rgba(8,11,18,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
     .nav-inner{max-width:1140px;margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between}
     .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
